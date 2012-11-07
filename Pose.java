@@ -7,29 +7,32 @@ import greenfoot.*;
  */
 public class Pose  
 {
-    private int x,y,rot;
-    private Actor actor;
+    private int x,y,shift_x,shift_y,rot;
+    private Scrollable scrble;
 
     /**
      * Constructor for objects of class Pose
      */
-    public Pose(Actor actor)
+    public Pose(Scrollable scrble)
     {
-        this.actor=actor;
-        x=actor.getX();
-        y=actor.getY();
-        rot=actor.getRotation();
+        this.scrble=scrble;
         
     }
 
-    public void update(Actor actor)
+    public void update()
     {
-        
+        x=scrble.getRealX();
+        y=scrble.getRealY();
+        shift_x=scrble.getScrWorld().getShiftX();
+        shift_y=scrble.getScrWorld().getShiftY();
+        rot=scrble.getRotation();
     }
     
     public void resetActor()
     {
-        actor.setLocation(x,y);
-        actor.setRotation(rot);
+        scrble.setLocation(x+shift_x,y+shift_y);
+        scrble.getScrWorld().setShift(shift_x,shift_y);
+        
+        scrble.setRotation(rot);
     }
 }

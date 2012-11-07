@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Wed Nov 07 22:09:47 CET 2012
+#Wed Nov 07 22:29:56 CET 2012
 target2.width=90
 target5.naviview.expanded=true
 dependency12.type=UsesDependency
@@ -38,6 +38,7 @@ target7.editor.height=1050
 dependency8.from=Scrollable
 dependency15.to=Astronaute
 target3.editor.y=0
+class.SpaceLemon.superclass=Obstacle
 target3.editor.x=964
 target5.name=Scrollable
 world.lastInstantiated=Space
@@ -111,6 +112,7 @@ dependency2.from=Rocket
 dependency6.from=Asteroid
 project.charset=UTF-8
 target3.showInterface=false
+class.Pose.superclass=
 target3.name=Bullet
 target6.showInterface=false
 dependency3.to=Asteroid
@@ -129,6 +131,7 @@ dependency8.to=Space
 target7.height=50
 dependency5.type=UsesDependency
 dependency13.from=Scrollable
+class.SpaceLemon.image=lemon.png
 dependency9.type=UsesDependency
 target3.editor.height=1058
 target6.width=80

@@ -45,5 +45,9 @@ public class Space extends ScrollableWorld
         Asteroid asteroid5 = new Asteroid();
         initObj(asteroid5, 1019, 423);
         initObj(new Asteroid(),1600, 900);
+        SpaceLemon spacelemon = new SpaceLemon();
+        initObj(spacelemon, 738, 147);
+        SpaceLemon spacelemon2 = new SpaceLemon();
+        initObj(spacelemon2, 410, 118);
     }
 }

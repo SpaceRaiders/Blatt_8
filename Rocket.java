@@ -46,12 +46,17 @@ public class Rocket extends Scrollable
      * berührt
      */
     private ArrayList<GreenfootSound> sounds = new ArrayList<GreenfootSound>();
+    /**
+     * Speichert die Position falls die Rakete auf ein Hindernis trifft
+     */
+    private Pose pose;
     
     public Rocket()
     {
         //init(getX(),getY());
         super(false);
         makePlaylist("bomb-1.wav,bomb-2.mp3,");
+        pose = new Pose(this);
     }
 
     /**
@@ -61,6 +66,7 @@ public class Rocket extends Scrollable
     {
         super(false);
         makePlaylist(playlist);
+        pose = new Pose(this);
     }
     /**
      * Diese Methode herstellt eine Playliste für ein Objekt "Rocket"
@@ -84,6 +90,7 @@ public class Rocket extends Scrollable
      */
     public void act() 
     {
+       pose.update();
        mouse = Greenfoot.getMouseInfo();
         
         moveAndTurn();
@@ -157,6 +164,11 @@ public class Rocket extends Scrollable
         {
             move(-3);
             speed = -1;
+        }
+        if(getOneIntersectingObject(Obstacle.class)!=null)
+        {
+            //System.out.println("pose rest"+getOneIntersectingObject(Obstacle.class));
+            pose.resetActor();
         }
     }
     /**

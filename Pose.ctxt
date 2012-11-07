@@ -1,9 +1,9 @@
 #BlueJ class context
-comment0.params=actor
-comment0.target=Pose(greenfoot.Actor)
+comment0.params=scrble
+comment0.target=Pose(Scrollable)
 comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Pose\r\n
-comment1.params=actor
-comment1.target=void\ update(greenfoot.Actor)
+comment1.params=
+comment1.target=void\ update()
 comment2.params=
 comment2.target=void\ resetActor()
 numComments=3

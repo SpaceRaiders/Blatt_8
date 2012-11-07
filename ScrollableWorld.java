@@ -71,6 +71,7 @@ public class ScrollableWorld extends World
         //System.out.println("dx: "+dx+"    dy: "+dy);
         shiftX+=dx;
         shiftY+=dy;
+        
         for(int i =0; i< objects.size();i++)
         {
             //realPos.get(i).setX();
@@ -80,6 +81,19 @@ public class ScrollableWorld extends World
             //tmp.setRealLocation(tmp.getRealX()+dx,tmp.getRealY()+dy);
         }
         
+        //scroll();
+        
+    }
+    public void scroll()
+    {
+        for(int i =0; i< objects.size();i++)
+        {
+            //realPos.get(i).setX();
+            
+            Actor tmp=objects.get(i);
+          //  tmp.setLocation(tmp.getX()+dx,tmp.getY()+dy);
+            //tmp.setRealLocation(tmp.getRealX()+dx,tmp.getRealY()+dy);
+        }
     }
     /**
      * Beim entfernen zu nutzen, amsonsten gibs Exception, weil beim Scrollen auf den Actor zugegriffen wird obwohl er nicht mehr in der Welt ist.
@@ -100,6 +114,11 @@ public class ScrollableWorld extends World
     public int getRealHeight()
     {
         return height;
+    }
+    public void setShift(int shift_x,int shift_y)
+    {
+        shiftX=shift_x;
+        shiftY=shift_y;
     }
     public int getShiftX()
     {
