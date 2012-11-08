@@ -88,7 +88,14 @@ public class Scrollable extends Actor
     {
         return space;
     }
-    
+    public void setRealX(int realX)
+    {
+        real_x=realX;
+    }
+    public void setRealY(int realY)
+    {
+        real_y=realY;
+    }
     public int getRealX()
     {
         return real_x;

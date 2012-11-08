@@ -84,7 +84,7 @@ public class ScrollableWorld extends World
     }
     public void scroll(int dx, int dy)
     {
-        System.out.println("Scroll: "+dx+":dx    "+dy+":dy");
+        //System.out.println("Scroll: "+dx+":dx    "+dy+":dy");
         shiftX+=dx;
         shiftY+=dy;
         for(int i =0; i< objects.size();i++)
