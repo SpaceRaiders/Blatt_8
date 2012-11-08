@@ -34,6 +34,7 @@ public class Space extends ScrollableWorld
     {
         Rocket rocket = new Rocket();
         initObj(rocket, getWidth()/2, getHeight()/2);
+        /*
         Asteroid asteroid = new Asteroid();
         initObj(asteroid, 666, 416);
         Asteroid asteroid2 = new Asteroid();
@@ -43,7 +44,7 @@ public class Space extends ScrollableWorld
         Asteroid asteroid4 = new Asteroid();
         initObj(asteroid4, 904, 493);
         Asteroid asteroid5 = new Asteroid();
-        initObj(asteroid5, 1019, 423);
+        initObj(asteroid5, 1019, 423);*/
         initObj(new Asteroid(),1600, 900);
         SpaceLemon spacelemon = new SpaceLemon();
         initObj(spacelemon, 738, 147);

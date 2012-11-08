@@ -21,8 +21,8 @@ public class Pose
 
     public void update()
     {
-        x=scrble.getRealX();
-        y=scrble.getRealY();
+        x=scrble.getX();
+        y=scrble.getY();
         shift_x=scrble.getScrWorld().getShiftX();
         shift_y=scrble.getScrWorld().getShiftY();
         rot=scrble.getRotation();
@@ -30,9 +30,13 @@ public class Pose
     
     public void resetActor()
     {
-        scrble.setLocation(x+shift_x,y+shift_y);
-        scrble.getScrWorld().setShift(shift_x,shift_y);
+        //scrble.getScrWorld().srcoll(x-scrble.getX(),y-scrble.getY());
+        //scrble.getScrWorld().setShift(shift_x,shift_y);
+        scrble.setLocation(x,y);
+        //scrble.getScrWorld().scroll(x-scrble.getX(), y-scrble.getY());
+        //System.out.println(x-scrble.getX()+" dx    "+(y-scrble.getY())+" dy");
         
-        scrble.setRotation(rot);
+        //scrble.getScrWorld().scroll(10,10);
+        //scrble.setRotation(rot);
     }
 }

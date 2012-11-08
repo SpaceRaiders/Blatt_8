@@ -50,7 +50,6 @@ public class ScrollableWorld extends World
         if(objects.get(0).getX()<grenzeX && objects.get(0).getX()<= objects.get(0).getRealX())
         {
             dx= grenzeX - objects.get(0).getX() ;
-            //System.out.println("am linken rand und srollbar");
             if(shiftX>0)// das hier sollte niemals kommen :D
             {
                 System.out.println(shiftX+"  bei If 1");
@@ -69,9 +68,8 @@ public class ScrollableWorld extends World
             dy= getHeight()-(grenzeY+objects.get(0).getY());
         }
         //System.out.println("dx: "+dx+"    dy: "+dy);
-        shiftX+=dx;
-        shiftY+=dy;
         
+        /*
         for(int i =0; i< objects.size();i++)
         {
             //realPos.get(i).setX();
@@ -80,18 +78,21 @@ public class ScrollableWorld extends World
             tmp.setLocation(tmp.getX()+dx,tmp.getY()+dy);
             //tmp.setRealLocation(tmp.getRealX()+dx,tmp.getRealY()+dy);
         }
-        
-        //scroll();
+        */
+        scroll(dx,dy);
         
     }
-    public void scroll()
+    public void scroll(int dx, int dy)
     {
+        System.out.println("Scroll: "+dx+":dx    "+dy+":dy");
+        shiftX+=dx;
+        shiftY+=dy;
         for(int i =0; i< objects.size();i++)
         {
             //realPos.get(i).setX();
             
             Actor tmp=objects.get(i);
-          //  tmp.setLocation(tmp.getX()+dx,tmp.getY()+dy);
+            tmp.setLocation(tmp.getX()+dx,tmp.getY()+dy);
             //tmp.setRealLocation(tmp.getRealX()+dx,tmp.getRealY()+dy);
         }
     }
