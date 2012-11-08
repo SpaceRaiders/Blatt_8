@@ -92,6 +92,7 @@ public class ScrollableWorld extends World
             //realPos.get(i).setX();
             
             Actor tmp=objects.get(i);
+            System.out.println("Actor:" + tmp);
             tmp.setLocation(tmp.getX()+dx,tmp.getY()+dy);
             //tmp.setRealLocation(tmp.getRealX()+dx,tmp.getRealY()+dy);
         }

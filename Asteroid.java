@@ -60,8 +60,10 @@ public class Asteroid extends Scrollable
             // Fall Kollision mit Kugel : Asteroid wird gelöcht.
             if(getOneIntersectingObject(Bullet.class) != null)
             {
-                getWorld().removeObject((Scrollable)getOneIntersectingObject(Bullet.class));
-                getWorld().removeObject((Scrollable)this);
+                getScrWorld().removeObject((Scrollable)getOneIntersectingObject(Bullet.class));
+                getScrWorld().removeObject((Scrollable)this);
+                //getWorld().removeObj((Scrollable)getOneIntersectingObject(Bullet.class));
+                //getWorld().removeObj((Scrollable)this);
             }
             else
             {

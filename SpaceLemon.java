@@ -1,19 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SpaceLemon here.
+ * Hinterhältiges Weltraumobst das der Rakete den Weg versperrt.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 04-11-2012
  */
 public class SpaceLemon extends Obstacle
 {
     /**
-     * Act - do whatever the SpaceLemon wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Die Klasse macht nie etwas, sie "liegt" nur im Weg rum.
      */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+       
 }
