@@ -100,7 +100,8 @@ public class Rocket extends Scrollable
         {
            //turnTowards(mouse.getX(),mouse.getY()); 
            Greenfoot.playSound("biglaser.wav");
-           space.initObj(new Bullet(getX(),getY(),mouse.getX(),mouse.getY()),getRealX(),getRealY());
+           //space.initObj(new Bullet(getX(),getY(),mouse.getX(),mouse.getY()),getRealX(),getRealY());
+           space.initObj(new Bullet(getX(),getY(),mouse.getX(),mouse.getY()),getX(),getY());
            System.out.println(getRealX()+":"+getRealY()+"     "+getX()+":"+getY());
         }
         

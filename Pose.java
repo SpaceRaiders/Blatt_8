@@ -2,48 +2,52 @@ import greenfoot.*;
 /**
  * Für Aufgabe 2
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 08-11-2012
  */
 public class Pose  
 {
-    private int x,y,shift_x,shift_y,rot;
+    private int x,y,rot;
+    private int shift_x,shift_y;
     private Scrollable scrble;
 
     /**
-     * Constructor for objects of class Pose
+     * Kostruktor. Hier wird der Klasse Pose eine ?Referenz? auf ein Scrollable Object gegeben.( Scrollable ist eine Unterklasse von Actor).
      */
     public Pose(Scrollable scrble)
     {
         this.scrble=scrble;
         
     }
-
+    /**
+     * Aktualisiert die Werte von Pose d.h. die x und y Koordinate und die Drehung.
+     * Wird zu Beginn der act() Methode aufgerufen.
+     */
     public void update()
     {
         x=scrble.getX();
         y=scrble.getY();
-        shift_x=scrble.getScrWorld().getShiftX();
-        shift_y=scrble.getScrWorld().getShiftY();
         rot=scrble.getRotation();
+        
+        
+        //shift_x=scrble.getScrWorld().getShiftX();
+        //shift_y=scrble.getScrWorld().getShiftY();
     }
-    
+    /**
+     * Verschiebt das Scrollable-Object so, dass der vorherige Zug rückgängig gemacht wird.
+     */
     public void resetActor()
     {
         
-        //scrble.getScrWorld().srcoll(x-scrble.getX(),y-scrble.getY());
-        //scrble.getScrWorld().setShift(shift_x,shift_y);
+        
         int dx,dy;
         dx=scrble.getX()-x;
         dy=scrble.getY()-y;
         scrble.setRealX(scrble.getRealX()-dx);
         scrble.setRealY(scrble.getRealY()-dy);
         scrble.setLocation(x,y);
-        System.out.println("Scroll: "+dx+":dx    "+dy+":dy");
-        //scrble.getScrWorld().scroll(x-scrble.getX(), y-scrble.getY());
-        //System.out.println(x-scrble.getX()+" dx    "+(y-scrble.getY())+" dy");
+        //System.out.println("Scroll: "+dx+":dx    "+dy+":dy");
         
-        //scrble.getScrWorld().scroll(10,10);
-        //scrble.setRotation(rot);
+        scrble.setRotation(rot);
     }
 }
