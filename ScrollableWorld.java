@@ -1,10 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList ;
 /**
- * Write a description of class ScrollablerWorld here.
+ * Oberklasse von SCrollbaren Welten. Implementiert einige Methoden um die Scrollbarkeit zu realisieren. 
+ * Da wären einige Methoden um die Liste der Scrollbaren Objekte zu verwalten ( inijObj(), removeObject() )
+ * und das eigentliche Scrollen. Hierfür wir din der act() bestimmt, ob und wenn ja wie weit die Rakete über die grenze ( vom Rand aus gesehen ( grenzeX,grenzeY)) geflogen ist und verschiebt dann alle Scrollbaren Objecte auf der WElt um dx,dy.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 09-11-2012
  */
 public class ScrollableWorld extends World
 {

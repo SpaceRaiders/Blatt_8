@@ -1,10 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Scrollable here.
+ * Oberklasse aller SCrollbaren Objecte.
+ * Wird zum einem zur identifizierung, ob ein Object Scrollbar ist genutzt. Dann gibt es noch ein paar andere Methoden,
+ * z.B. setVisible inzwischen im Prinzip überholt, diese MEthode erstzt das Bild durch eine 1px großen transparentes Bild.
+ * Ich bin mir momentan nicht sicher ob real_x überhaupt genutzt wird. 
+ * Die move ist für die Raktete wichtig, amsonsten kann die Raktete die Welt velassen ( einfach im Konstuktor der Rakete super(true) anstatt super(false) um ausprobieren. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 09-11-2012
  */
 public class Scrollable extends Actor
 {
