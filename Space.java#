@@ -50,7 +50,5 @@ public class Space extends ScrollableWorld
         initObj(spacelemon, 738, 147);
         SpaceLemon spacelemon2 = new SpaceLemon();
         initObj(spacelemon2, 410, 118);
-        Blackhole blackhole = new Blackhole();
-        addObject(blackhole, 761, 423);
     }
 }
