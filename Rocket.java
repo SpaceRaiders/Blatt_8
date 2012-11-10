@@ -198,8 +198,8 @@ public class Rocket extends Scrollable
     /**
      * Fügt ein Objekt in das Rackettes Inventar.
      */
-    public void addItem()
+    public void addItem(Item new_item)
     {
-        //inventory.addItem(Item)
+        //inventory.addItem(new_item)
     }
 }

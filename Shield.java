@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Shield extends Scrollable
+public class Shield extends Item
 {
     /**
      * Act - do whatever the Shield wants to do. This method is called whenever
@@ -26,10 +26,11 @@ public class Shield extends Scrollable
         {
             Rocket rocket = (Rocket) getOneIntersectingObject(Rocket.class);
             // die Nummer des gerettetes Astronautes wird mit 1 addiert.
-            //rocket.addItem(this);
+            rocket.addItem(this);
             
             /* der Astronaut ist gerettet : Er befindet sich jetzt in die Rackette; deshalb muss
              * man den löschen um den unsichtbar zu machen. */
+            setImage("void.png");
             //getWorld().removeObject((Scrollable)this);
         }
     }
