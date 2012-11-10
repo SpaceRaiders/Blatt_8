@@ -37,19 +37,27 @@ public class Rocket extends Scrollable
      * Definiert wie viele Astronauten gerettet wurden.
      */
     private int numberSavedPeople = 0;
+    
     /**
      * 
      */
-    private GreenfootImage img=null;
+    private GreenfootImage img = null;
+    
     /**
      * Enthält alle Sounds, die abgespielen werden sollen wenn die Rackette eine Asteroid
      * berührt
      */
+    
     private ArrayList<GreenfootSound> sounds = new ArrayList<GreenfootSound>();
     /**
      * Speichert die Position falls die Rakete auf ein Hindernis trifft
      */
     private Pose pose;
+    
+    /**
+     * Objekt, das alle gesamellte items speichert.
+     */
+    //private Inventory inventory;
     
     public Rocket()
     {
@@ -185,5 +193,13 @@ public class Rocket extends Scrollable
             System.out.println("Sie haben alle Astronauten gerettet. Das Spiel ist Gewonnen.");
             Greenfoot.stop();
         }
+    }
+    
+    /**
+     * Fügt ein Objekt in das Rackettes Inventar.
+     */
+    public void addItem()
+    {
+        //inventory.addItem(Item)
     }
 }
