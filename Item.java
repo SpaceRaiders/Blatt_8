@@ -1,19 +1,20 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
 /**
- * Write a description of class Item here.
+ * Klasse Item : ist die Mutterklasse von alle Items, die in der Rackettes Inventar
+ * hinzugefügt werden können.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 11-11-2012
  */
 public class Item extends Scrollable
 {
     /**
-     * Act - do whatever the Item wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Diese Methode wird immer angerufen, wenn die Taste 'Act' oder 'Run' gedrückt ist.
+     * Hier wird auf Mausklicks reagiert und eine Object der Bulet Klasse der Welt hinzugefügt.
      */
     public void act() 
     {
-        // Add your action code here.
+        
     }    
 }
