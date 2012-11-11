@@ -15,12 +15,12 @@ public class Inventory extends Actor
     /**
      * Definiert, wo das Item auf das Bild sich befinden soll.
      */
-    private int posItem_y = 40;
+    private int posItem_y = 55;
     
     /**
      * Definiert, wieviel Item das Inventar enthälten darf.
      */
-    static private int ITEM_MAX = 5;
+    static private int ITEM_MAX = 6;
       
     /**
      * 
@@ -36,7 +36,7 @@ public class Inventory extends Actor
     public void storeItem(Item item)
     {
         System.out.println("how many items in Inventory? : " + items.size());
-        if (items.size() <= ITEM_MAX)
+        if (items.size() < ITEM_MAX)
         {
             storeScrble(item);
         }
@@ -51,16 +51,18 @@ public class Inventory extends Actor
         //if(!isEmpty())
         //{
             //removeScrble(scrble.getX(),scrble.getY());
+        //}
         //else
         //{
             System.out.println("add new Item : " + scrble);
             items.add(scrble);
             World world = scrble.getWorld();
             scrble.getScrWorld().removeObject(scrble);
-            world.addObject(scrble,979, posItem_y);
+            world.addObject(scrble,955, posItem_y);
+            
             // Das nächste Item wird weiter nach unten gezeigt.
             posItem_y += 100;
-       // }
+        //}
         
     }
     

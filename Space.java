@@ -64,5 +64,14 @@ public class Space extends ScrollableWorld
         initObj(shield4, 2000, 91);
         shield3.setLocation(92, 542);
         shield2.setLocation(989, 595);
+        Shield shield5 = new Shield();
+        initObj(shield5, 600, 536);
+        Shield shield6 = new Shield();
+        initObj(shield6, 900, 536);
+        Shield shield7 = new Shield();
+        initObj(shield7, 1200, 536);
+        Inventory inventory = new Inventory();
+        addObject(inventory, 958, 307);
+        inventory.setLocation(950, 300);
     }
 }
