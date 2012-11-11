@@ -204,7 +204,7 @@ public class Rocket extends Scrollable
      */
     public void addItem(Item new_item)
     {
-        System.out.println("new Item : "+ new_item);
+        System.out.println("new Item : " + new_item);
         inventory.storeItem(new_item);
     }
 }
