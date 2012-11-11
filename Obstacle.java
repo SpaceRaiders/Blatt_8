@@ -3,8 +3,8 @@ import greenfoot.*;
 /**
  * OberKlasse für Hindernisse
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 11-11-2012
  */
 public class Obstacle extends Scrollable
 {
