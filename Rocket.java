@@ -70,6 +70,14 @@ public class Rocket extends Scrollable
      * 
      */
     private int itemBeingUsed = 0;
+    /**
+     * Speichert ob man schon etwas abgeworfen hat
+     */
+    private boolean dropped=false;
+    /**
+     * Sound wenn etwas abegeworfen wird
+     */
+    private GreenfootSound drop= new GreenfootSound("biglaser.wav");
     
     public Rocket()
     {
@@ -256,7 +264,19 @@ public class Rocket extends Scrollable
             itemBeingUsed = 0;
             takingItem = false;
         }
-        
+        if(Greenfoot.isKeyDown("space"))
+        {
+            if(!inventory.isEmpty()&&!dropped)
+            {
+                inventory.removeScrble(getX()+10,getY()+10);
+                dropped=true;
+            }
+            else if(!drop.isPlaying())
+            {
+                
+                Greenfoot.playSound("biglaser.wav");
+            }
+        }
         if(getOneIntersectingObject(Obstacle.class)!=null && !(inventory.get(itemBeingUsed -1) instanceof Shield))//&& Greenfoot.isKeyDown("space"))
         {
             //System.out.println("pose rest"+getOneIntersectingObject(Obstacle.class));
