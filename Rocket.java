@@ -65,6 +65,7 @@ public class Rocket extends Scrollable
         super(false);
         makePlaylist("bomb-1.wav,bomb-2.mp3,");
         pose = new Pose(this);
+        inventory= new Inventory();
     }
 
     /**
@@ -75,6 +76,8 @@ public class Rocket extends Scrollable
         super(false);
         makePlaylist(playlist);
         pose = new Pose(this);
+        
+        inventory= new Inventory();
     }
     /**
      * Diese Methode herstellt eine Playliste für ein Objekt "Rocket"
@@ -200,6 +203,7 @@ public class Rocket extends Scrollable
      */
     public void addItem(Item new_item)
     {
+        System.out.println(new_item);
         inventory.storeItem(new_item);
     }
 }

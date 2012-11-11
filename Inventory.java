@@ -39,9 +39,11 @@ public class Inventory extends Actor
         }
         else
         {
+            System.out.println(scrble);
             items.add(scrble);
+            World world = scrble.getWorld();
             scrble.getScrWorld().removeObject(scrble);
-            getWorld().addObject(scrble,0,0);
+           world.addObject(scrble,0,0);
         }
         
     }
