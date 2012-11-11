@@ -79,12 +79,13 @@ public class Inventory extends Actor
     
     public Scrollable get(int i)
     {
-        if(items.size()==0)
+        if (i < 0 || i >= items.size())
+        //if (items.size()<=0)
         {
             return null;
         }
         else
-        { 
+        {
             return items.get(i);
         }
     }

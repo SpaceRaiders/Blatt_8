@@ -37,7 +37,6 @@ public class Astronaute extends Scrollable
      */
     public void act() 
     {
-        super.act();
         move();
         checkCollision();
     }

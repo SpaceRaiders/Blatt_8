@@ -66,6 +66,11 @@ public class Rocket extends Scrollable
      */
     private boolean takingItem = false;
     
+    /**
+     * 
+     */
+    private int itemBeingUsed = 0;
+    
     public Rocket()
     {
         //init(getX(),getY());
@@ -120,7 +125,7 @@ public class Rocket extends Scrollable
            Greenfoot.playSound("biglaser.wav");
            //space.initObj(new Bullet(getX(),getY(),mouse.getX(),mouse.getY()),getRealX(),getRealY());
            space.initObj(new Bullet(getX(),getY(),mouse.getX(),mouse.getY()),getX(),getY());
-           System.out.println(getRealX()+":"+getRealY()+"     "+getX()+":"+getY());
+           //System.out.println(getRealX()+":"+getRealY()+"     "+getX()+":"+getY());
         }
         
     }
@@ -191,6 +196,7 @@ public class Rocket extends Scrollable
             {
                 System.out.println("Take Item 1");
             }
+            itemBeingUsed = 1;
             takingItem = true;
             useItem(1);
         }
@@ -200,6 +206,7 @@ public class Rocket extends Scrollable
             {
                 System.out.println("Take Item 2");
             }
+            itemBeingUsed = 2;
             takingItem = true;
             useItem(2);
         }
@@ -209,6 +216,7 @@ public class Rocket extends Scrollable
             {
                 System.out.println("Take Item 3");
             }
+            itemBeingUsed = 3;
             takingItem = true;
             useItem(3);
         }
@@ -218,6 +226,7 @@ public class Rocket extends Scrollable
             {
                 System.out.println("Take Item 4");
             }
+            itemBeingUsed = 4;
             takingItem = true;
             useItem(4);
         }
@@ -227,6 +236,7 @@ public class Rocket extends Scrollable
             {
                 System.out.println("Take Item 5");
             }
+            itemBeingUsed = 5;
             takingItem = true;
             useItem(5);
         }
@@ -236,16 +246,18 @@ public class Rocket extends Scrollable
             {
                 System.out.println("Take Item 6");
             }
+            itemBeingUsed = 6;
             takingItem = true;
             useItem(6);
         }
         
         if(!Greenfoot.isKeyDown("1") && !Greenfoot.isKeyDown("2") && !Greenfoot.isKeyDown("3") && !Greenfoot.isKeyDown("4") && !Greenfoot.isKeyDown("5") && !Greenfoot.isKeyDown("6"))
         {
+            itemBeingUsed = 0;
             takingItem = false;
         }
         
-        if(getOneIntersectingObject(Obstacle.class)!=null)
+        if(getOneIntersectingObject(Obstacle.class)!=null && !(inventory.get(itemBeingUsed -1) instanceof Shield))//&& Greenfoot.isKeyDown("space"))
         {
             //System.out.println("pose rest"+getOneIntersectingObject(Obstacle.class));
             pose.resetActor();
