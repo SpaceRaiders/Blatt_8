@@ -1,10 +1,10 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
- * Write a description of class Shield here.
+ * Klasse Shield : Dieses Item erlaubt, eine Rackette durch ein schwarze loch zu gehen.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 11-11-2012
  */
 public class Shield extends Item
 {
@@ -19,7 +19,8 @@ public class Shield extends Item
     private boolean firstCollision = false;
 
     /**
-     * Act - 
+     * Diese Methode wird immer angerufen, wenn die Taste 'Act' oder 'Run' gedrückt ist.
+     * Hier wird auf Mausklicks reagiert und eine Object der Bulet Klasse der Welt hinzugefügt.
      */
     public void act() 
     {

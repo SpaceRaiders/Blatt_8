@@ -1,9 +1,11 @@
 import greenfoot.*; 
+
 /**
- * Write a description of class Blackhole here.
+ * Klasse Blackhole : Objekte dieser Klasse liegen einfach nur in der Weltraum.
+ * Rackette können es durchgehen nur wenn sie ein Shield vom Inventar aktivieren.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 11-11-2012
  */
 public class Blackhole extends Obstacle
 {

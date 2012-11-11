@@ -1,10 +1,10 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
  * Hinterhältiges Weltraumobst das der Rakete den Weg versperrt.
  * 
  * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
- * @version 04-11-2012
+ * @version 11-11-2012
  */
 public class SpaceLemon extends Obstacle
 {
