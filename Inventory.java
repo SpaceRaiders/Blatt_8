@@ -20,6 +20,13 @@ public class Inventory extends Actor
         
     }
     /**
+     * 
+     */
+    public void storeItem(Item item)
+    {
+        storeScrble(item);
+    }
+    /**
      * Speicehrt ein Scrollable-Object im inventar. Wenn schon ein Object im inventar ist, wird dieses an der Stelle abegeworfen.
      * 
      */

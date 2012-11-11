@@ -57,7 +57,7 @@ public class Rocket extends Scrollable
     /**
      * Objekt, das alle gesamellte items speichert.
      */
-    //private Inventory inventory;
+    private Inventory inventory;
     
     public Rocket()
     {
@@ -200,6 +200,6 @@ public class Rocket extends Scrollable
      */
     public void addItem(Item new_item)
     {
-        //inventory.addItem(new_item)
+        inventory.storeItem(new_item);
     }
 }
