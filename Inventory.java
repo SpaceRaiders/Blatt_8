@@ -2,14 +2,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList ;
 
 /**
- * Write a description of class Inventory here.
+ * Inventar.
+ * Objekte von Unterklassen von Item können im Inventar abgelegt werden, bis das Inventar gefüllt ist. 
+ * Sie werden dann am rechten Bildschirmrand dargestellt.
  * 
  * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
  * @version 09-11-2012
  */
 public class Inventory extends Actor
 {
-
+    /**
+     * Hier werden die Objekte von Itemunterklassen gespeichert. 
+     */
     private ArrayList<Scrollable> items = new ArrayList<Scrollable>();
     
     /**
@@ -18,12 +22,12 @@ public class Inventory extends Actor
     private int posItem_y = 55;
     
     /**
-     * Definiert, wieviel Item das Inventar enthälten darf.
+     * Definiert, wieviele Items das Inventar enthälten darf.
      */
-    static private int ITEM_MAX = 6;
+    final private int ITEM_MAX = 1;
       
     /**
-     * 
+     * Diese Methode
      */
     public void storeActor(Actor actor)
     {
@@ -43,8 +47,8 @@ public class Inventory extends Actor
     }
     
     /**
-     * Speicehrt ein Scrollable-Object im inventar. Wenn schon ein Object im 
-     * inventar ist, wird dieses an der Stelle abegeworfen.
+     * Speicehrt ein Scrollable-Object im inventar. 
+     * 
      */
     public void storeScrble(Scrollable scrble)
     {
@@ -66,17 +70,31 @@ public class Inventory extends Actor
         
     }
     
+    /**
+     * Entfernt ein Objekt aus dem Inventar und fügt es der eigentlichen Welt hinzu.
+     * @param x X-Koordinate wo das Objekt hinzugefügt wird
+     * @param y Y-Koordinate wo das Objekt hinzugefügt wird
+     */
     public void removeScrble(int x,int y)
     {
         get().getWorld().removeObject(get());
         get().getScrWorld().initObj(get(), x, y);
     }
     
+    /**
+     * Kurze Schribweise von get(0)
+     */
     public Scrollable get()
     {
         return get(0);
     }
     
+    /**
+     * Gibt das Objekt mit Index i aus dem Inventar. Der Index beginnt mit 0.
+     * Wenn kein Objekt im Inentar ist, wird null zurückgegeben.
+     * 
+     * @param i Index des Objektes im Inventar
+     */
     public Scrollable get(int i)
     {
         if (i < 0 || i >= items.size())
@@ -88,11 +106,7 @@ public class Inventory extends Actor
         {
             return items.get(i);
         }
-    }   
-    
-    /**
-     * 
-     */
+    }
     public boolean isEmpty()
     {
         if(items.size()==0)

@@ -12,7 +12,8 @@ public class Pose
     private Scrollable scrble;
 
     /**
-     * Kostruktor. Hier wird der Klasse Pose eine ?Referenz? auf ein Scrollable Object gegeben.( Scrollable ist eine Unterklasse von Actor).
+     * Kostruktor. Hier wird der Klasse Pose eine ?Referenz? auf ein Scrollable Object gegeben.
+     * ( Scrollable ist eine Unterklasse von Actor).
      */
     public Pose(Scrollable scrble)
     {
@@ -28,13 +29,9 @@ public class Pose
         x=scrble.getX();
         y=scrble.getY();
         rot=scrble.getRotation();
-        
-        
-        //shift_x=scrble.getScrWorld().getShiftX();
-        //shift_y=scrble.getScrWorld().getShiftY();
     }
     /**
-     * Verschiebt das Scrollable-Object so, dass der vorherige Zug rückgängig gemacht wird.
+     * Verschiebt das Scrollable-Object (die Rakete) so, dass der vorherige Zug rückgängig gemacht wird.
      */
     public void resetActor()
     {
