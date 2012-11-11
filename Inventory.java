@@ -35,6 +35,7 @@ public class Inventory extends Actor
      */
     public void storeItem(Item item)
     {
+        System.out.println("how many items in Inventory? : " + items.size());
         if (items.size() <= ITEM_MAX)
         {
             storeScrble(item);
@@ -47,20 +48,19 @@ public class Inventory extends Actor
      */
     public void storeScrble(Scrollable scrble)
     {
-        if(!isEmpty())
-        {
+        //if(!isEmpty())
+        //{
             //removeScrble(scrble.getX(),scrble.getY());
-        }
-        else
-        {
-            System.out.println(scrble);
+        //else
+        //{
+            System.out.println("add new Item : " + scrble);
             items.add(scrble);
             World world = scrble.getWorld();
             scrble.getScrWorld().removeObject(scrble);
             world.addObject(scrble,979, posItem_y);
             // Das nächste Item wird weiter nach unten gezeigt.
             posItem_y += 100;
-        }
+       // }
         
     }
     

@@ -37,9 +37,6 @@ public class Shield extends Item
         if(getOneIntersectingObject(Rocket.class) != null)
         {
             Rocket rocket = (Rocket) getOneIntersectingObject(Rocket.class);
-            /* Falls das Shiel in Kollision mit der Rackette kommt, wird
-            es nicht gelöcht, sonder nur unsichtbar gemacht. */
-            //setImage("void.png");
             // Das Item Shiel wird in der Inventar der Rackette hinzugefügt.
             rocket.addItem(this);
             /* Diese Funktion wird jetzt nich mehr aufgerunfen, solang
