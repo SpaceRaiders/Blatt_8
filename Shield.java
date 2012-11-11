@@ -9,12 +9,24 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Shield extends Item
 {
     /**
-     * Act - do whatever the Shield wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * firstCollision : Diese Variable ist nötig, um die Kollisionsüberwachung zwichen eine Rackette
+     * und das Shild zu stoppen; so wird die Funktion checkCollision(nur aufgerugen, wenn das Shild
+     * noch sichtbar ist).
+     * 
+     * false : Das Shild wurde von keine Rackette gefressen.
+     * true : Das Shild wurde schon in Kontakt mit eine Rackette
+     */
+    private boolean firstCollision = false;
+
+    /**
+     * Act - 
      */
     public void act() 
     {
-        checkCollision();
+        if(!firstCollision)
+        {
+            checkCollision();
+        }
     }
     
     /**
@@ -22,14 +34,17 @@ public class Shield extends Item
      */
     private void checkCollision()
     {
-        if( getOneIntersectingObject(Rocket.class) != null)
+        if(getOneIntersectingObject(Rocket.class) != null)
         {
             Rocket rocket = (Rocket) getOneIntersectingObject(Rocket.class);
-            // Falls das Shiel in Kollision mit der Rackette kommt, wird
-            // es nicht gelöcht, sonder nur unsichtbar gemacht.
+            /* Falls das Shiel in Kollision mit der Rackette kommt, wird
+            es nicht gelöcht, sonder nur unsichtbar gemacht. */
             setImage("void.png");
             // Das Item Shiel wird in der Inventar der Rackette hinzugefügt.
             rocket.addItem(this);
+            /* Diese Funktion wird jetzt nich mehr aufgerunfen, solang
+            firstCollision das Wert "true" hat. */
+            firstCollision = true;
         }
     }
 }

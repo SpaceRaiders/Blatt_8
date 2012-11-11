@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Shield\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment0.text=\r\n\ Act\ -\ \r\n
 comment1.params=
 comment1.target=void\ checkCollision()
 comment1.text=\r\n\ Diese\ Methode\ \u00FCberpr\u00FCft,\ ob\ das\ Shield-Objekt\ eine\ Kollision\ mit\ eine\ Rakete-Objekt\ hat.\r\n
