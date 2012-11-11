@@ -59,6 +59,13 @@ public class Rocket extends Scrollable
      */
     private Inventory inventory;
     
+    /**
+     * Definiert, ob man gerade auf eine Num Taste drückt, um ein Item zu nehmen
+     * Dieser Attribut hilft, ein Item nur einmal benutzt zu werden (erstes druckt
+     * auf eine Taste) und nicht so lange die Taste gedrückt wird.
+     */
+    private boolean takingItem = false;
+    
     public Rocket()
     {
         //init(getX(),getY());
@@ -177,6 +184,67 @@ public class Rocket extends Scrollable
             move(-3);
             speed = -1;
         }
+        
+        else if(Greenfoot.isKeyDown("1"))
+        {
+            if (!takingItem)
+            {
+                System.out.println("Take Item 1");
+            }
+            takingItem = true;
+            useItem(1);
+        }
+        if(Greenfoot.isKeyDown("2"))
+        {
+            if (!takingItem)
+            {
+                System.out.println("Take Item 2");
+            }
+            takingItem = true;
+            useItem(2);
+        }
+        if(Greenfoot.isKeyDown("3"))
+        {
+            if (!takingItem)
+            {
+                System.out.println("Take Item 3");
+            }
+            takingItem = true;
+            useItem(3);
+        }
+        if(Greenfoot.isKeyDown("4"))
+        {
+            if (!takingItem)
+            {
+                System.out.println("Take Item 4");
+            }
+            takingItem = true;
+            useItem(4);
+        }
+        if(Greenfoot.isKeyDown("5"))
+        {
+            if (!takingItem)
+            {
+                System.out.println("Take Item 5");
+            }
+            takingItem = true;
+            useItem(5);
+        }
+        if(Greenfoot.isKeyDown("6"))
+        {
+            if (!takingItem)
+            {
+                System.out.println("Take Item 6");
+            }
+            takingItem = true;
+            useItem(6);
+        }
+        
+        if(!Greenfoot.isKeyDown("1") && !Greenfoot.isKeyDown("2") && !Greenfoot.isKeyDown("3") && !Greenfoot.isKeyDown("4") && !Greenfoot.isKeyDown("5") && !Greenfoot.isKeyDown("6"))
+        {
+            takingItem = false;
+        }
+        
         if(getOneIntersectingObject(Obstacle.class)!=null)
         {
             //System.out.println("pose rest"+getOneIntersectingObject(Obstacle.class));
@@ -184,6 +252,14 @@ public class Rocket extends Scrollable
         }
     }
 
+    /**
+     * 
+     */
+    public void useItem(int itemNumber)
+    {
+        
+    }
+    
     /**
      * Diese Funktion erhöht die gespeicherte Zahl der gerettete Menschen von 1 und überprüft, ob
      * alle Menschen gerettet sind. Falls ja, dann wird ein Nachricht angezeigt, dass das Spiel
