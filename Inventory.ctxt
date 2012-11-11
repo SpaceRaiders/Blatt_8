@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=actor
+comment0.target=void\ storeActor(greenfoot.Actor)
+comment0.text=\r\n\ \r\n
+comment1.params=item
+comment1.target=void\ storeItem(Item)
+comment1.text=\r\n\ \r\n
+comment2.params=scrble
+comment2.target=void\ storeScrble(Scrollable)
+comment2.text=\r\n\ Speicehrt\ ein\ Scrollable-Object\ im\ inventar.\ Wenn\ schon\ ein\ Object\ im\ inventar\ ist,\ wird\ dieses\ an\ der\ Stelle\ abegeworfen.\r\n\ \r\n
+comment3.params=x\ y
+comment3.target=void\ removeScrble(int,\ int)
+comment4.params=
+comment4.target=Scrollable\ get()
+comment5.params=i
+comment5.target=Scrollable\ get(int)
+comment6.params=
+comment6.target=boolean\ isEmpty()
+numComments=7

@@ -1,0 +1,79 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList ;
+
+/**
+ * Write a description of class Inventory here.
+ * 
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 09-11-2012
+ */
+public class Inventory extends Actor
+{
+
+    private ArrayList<Scrollable> items = new ArrayList<Scrollable>();
+      
+    /**
+     * 
+     */
+    public void storeActor(Actor actor)
+    {
+        
+    }
+    /**
+     * 
+     */
+    public void storeItem(Item item)
+    {
+        storeScrble(item);
+    }
+    /**
+     * Speicehrt ein Scrollable-Object im inventar. Wenn schon ein Object im inventar ist, wird dieses an der Stelle abegeworfen.
+     * 
+     */
+    public void storeScrble(Scrollable scrble)
+    {
+        if(!isEmpty())
+        {
+            //removeScrble(scrble.getX(),scrble.getY());
+            
+        }
+        else
+        {
+            items.add(scrble);
+            scrble.getScrWorld().removeObject(scrble);
+            getWorld().addObject(scrble,0,0);
+        }
+        
+    }
+    public void removeScrble(int x,int y)
+    {
+        get().getWorld().removeObject(get());
+        get().getScrWorld().initObj(get(), x, y);
+    }
+    public Scrollable get()
+    {
+        return get(0);
+    }
+    public Scrollable get(int i)
+    {
+        if(items.size()==0)
+        {
+            return null;
+        }
+        else
+        { 
+            return items.get(i);
+        }
+    }
+    public boolean isEmpty()
+    {
+        if(items.size()==0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}

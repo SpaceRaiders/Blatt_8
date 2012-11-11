@@ -25,13 +25,11 @@ public class Shield extends Item
         if( getOneIntersectingObject(Rocket.class) != null)
         {
             Rocket rocket = (Rocket) getOneIntersectingObject(Rocket.class);
-            // die Nummer des gerettetes Astronautes wird mit 1 addiert.
-            rocket.addItem(this);
-            
-            /* der Astronaut ist gerettet : Er befindet sich jetzt in die Rackette; deshalb muss
-             * man den löschen um den unsichtbar zu machen. */
+            // Falls das Shiel in Kollision mit der Rackette kommt, wird
+            // es nicht gelöcht, sonder nur unsichtbar gemacht.
             setImage("void.png");
-            //getWorld().removeObject((Scrollable)this);
+            // Das Item Shiel wird in der Inventar der Rackette hinzugefügt.
+            rocket.addItem(this);
         }
     }
 }
