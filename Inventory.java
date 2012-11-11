@@ -88,15 +88,7 @@ public class Inventory extends Actor
         {
             return items.get(i);
         }
-    }
-    
-    /**
-     * 
-     */
-    public void clean()
-    {
-        
-    }
+    }   
     
     /**
      * 
