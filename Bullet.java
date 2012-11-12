@@ -43,7 +43,7 @@ public class Bullet extends Scrollable
     public void act() 
     {
         // Add your action code here.
-        move(3);
+        move(7);
         lifetime+=1;
         
         /*if( getOneIntersectingObject(Asteroid.class) != null)

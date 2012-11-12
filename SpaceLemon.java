@@ -10,6 +10,5 @@ public class SpaceLemon extends Obstacle
 {
     /**
      * Die Klasse macht nie etwas, sie "liegt" nur im Weg herum.
-     * 
      */
 }

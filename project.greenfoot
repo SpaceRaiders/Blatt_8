@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Mon Nov 12 10:21:53 CET 2012
+#Mon Nov 12 10:25:53 CET 2012
 target2.name=Bullet
 target9.name=Scrollable
 dependency11.type=UsesDependency
@@ -147,6 +147,10 @@ target2.y=70
 target10.editor.height=1052
 target11.type=ClassTarget
 target2.x=70
+<<<<<<< HEAD
+=======
+class.Andromeda.superclass=ScrollableWorld
+>>>>>>> c761c820565c01a09db7c2aba6eca6bf75c2c649
 dependency22.type=UsesDependency
 dependency29.type=UsesDependency
 dependency26.from=Rocket
@@ -238,6 +242,10 @@ target10.naviview.expanded=true
 class.Astronaute.image=astronaute.PNG
 dependency13.to=ScrollableWorld
 dependency3.type=UsesDependency
+<<<<<<< HEAD
+=======
+class.Andromeda.image=space.jpg
+>>>>>>> c761c820565c01a09db7c2aba6eca6bf75c2c649
 target8.editor.height=1054
 target15.editor.width=968
 dependency7.from=Space
@@ -290,6 +298,7 @@ target12.width=80
 dependency2.type=UsesDependency
 target4.y=250
 target4.x=10
+<<<<<<< HEAD
 target12.height=50
 target8.editor.y=-9
 dependency6.from=Asteroid
@@ -297,6 +306,15 @@ dependency9.type=UsesDependency
 target8.editor.x=2
 target14.editor.height=1050
 class.Scrollable.superclass=greenfoot.Actor
+=======
+dependency9.type=UsesDependency
+dependency6.from=Asteroid
+target8.editor.y=-9
+target12.height=50
+target8.editor.x=2
+class.Scrollable.superclass=greenfoot.Actor
+target14.editor.height=1050
+>>>>>>> c761c820565c01a09db7c2aba6eca6bf75c2c649
 target11.editor.width=900
 world.lastInstantiated=Space
 dependency14.to=Rocket
