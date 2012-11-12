@@ -11,6 +11,7 @@ public class MainMenu extends World
 {
     private ArrayList<World> worlds = new ArrayList<World>();
     private int lvl=0;
+    private final int MAX_LVL=2;
     /**
      * Constructor for objects of class MainMenu.
      * 
@@ -27,7 +28,14 @@ public class MainMenu extends World
         super(600, 400, 1); 
         worlds.add(new Space(0));
         worlds.add(new Andromeda(1));
-        this.lvl=lvl+1;
+        if(lvl<MAX_LVL)
+        {
+            this.lvl=lvl+1;
+        }
+        else
+        {
+            this.lvl=0;
+        }
     }
     public void act()
     {
