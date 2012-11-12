@@ -1,21 +1,21 @@
 #BlueJ class context
 comment0.params=screenWidth\ screenHeight\ cellsize\ width\ height
 comment0.target=ScrollableWorld(int,\ int,\ int,\ int,\ int)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Space.\r\n\ \r\n
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Space.\n\ \n
 comment1.params=scrble\ x\ y
 comment1.target=void\ initObj(Scrollable,\ int,\ int)
-comment1.text=\r\n\ @param\ scrble\ Objekt\ einer\ Subklasse\ von\ Scrollable,\ das\ hinzugef\u00FCgt\ wird.\r\n\ @param\ x\ X-Koordinate\r\n\ @param\ y\ Y-Koordinate\r\n
+comment1.text=\n\ @param\ scrble\ Objekt\ einer\ Subklasse\ von\ Scrollable,\ das\ hinzugef\u00FCgt\ wird.\n\ @param\ x\ X-Koordinate\n\ @param\ y\ Y-Koordinate\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act-Methode\ der\ World,\ achtet\ auf\ die\ Position\ der\ Rakete\ bzw\ des\ Ersten\ Object\ in\ Objects\ (\ objects.get(0))\ und\ verschieb\ alle\ Objekte\ dementsprechend.\r\n\ \r\n
+comment2.text=\n\ Act-Methode\ der\ World,\ achtet\ auf\ die\ Position\ der\ Rakete\ bzw\ des\ Ersten\ Object\ in\ Objects\ (\ objects.get(0))\ und\ verschieb\ alle\ Objekte\ dementsprechend.\n\ \n
 comment3.params=dx\ dy
 comment3.target=void\ scroll(int,\ int)
 comment4.params=scrble
 comment4.target=void\ removeObject(Scrollable)
-comment4.text=\r\n\ Beim\ entfernen\ zu\ nutzen,\ amsonsten\ gibs\ Exception,\ weil\ beim\ Scrollen\ auf\ den\ Actor\ zugegriffen\ wird\ obwohl\ er\ nicht\ mehr\ in\ der\ Welt\ ist.\r\n\ \r\n
+comment4.text=\n\ Beim\ entfernen\ zu\ nutzen,\ amsonsten\ gibs\ Exception,\ weil\ beim\ Scrollen\ auf\ den\ Actor\ zugegriffen\ wird\ obwohl\ er\ nicht\ mehr\ in\ der\ Welt\ ist.\n\ \n
 comment5.params=
 comment5.target=int\ getRealWidth()
-comment5.text=\r\n\ \r\n
+comment5.text=\n\ \n
 comment6.params=
 comment6.target=int\ getRealHeight()
 comment7.params=shift_x\ shift_y

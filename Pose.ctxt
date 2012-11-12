@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.params=scrble
 comment0.target=Pose(Scrollable)
-comment0.text=\r\n\ Kostruktor.\ Hier\ wird\ der\ Klasse\ Pose\ eine\ ?Referenz?\ auf\ ein\ Scrollable\ Object\ gegeben.\r\n\ (\ Scrollable\ ist\ eine\ Unterklasse\ von\ Actor).\r\n
+comment0.text=\n\ Kostruktor.\ Hier\ wird\ der\ Klasse\ Pose\ eine\ ?Referenz?\ auf\ ein\ Scrollable\ Object\ gegeben.\n\ (\ Scrollable\ ist\ eine\ Unterklasse\ von\ Actor).\n
 comment1.params=
 comment1.target=void\ update()
-comment1.text=\r\n\ Aktualisiert\ die\ Werte\ von\ Pose\ d.h.\ die\ x\ und\ y\ Koordinate\ und\ die\ Drehung.\r\n\ Wird\ zu\ Beginn\ der\ act()\ Methode\ aufgerufen.\r\n
+comment1.text=\n\ Aktualisiert\ die\ Werte\ von\ Pose\ d.h.\ die\ x\ und\ y\ Koordinate\ und\ die\ Drehung.\n\ Wird\ zu\ Beginn\ der\ act()\ Methode\ aufgerufen.\n
 comment2.params=
 comment2.target=void\ resetActor()
-comment2.text=\r\n\ Verschiebt\ das\ Scrollable-Object\ (die\ Rakete)\ so,\ dass\ der\ vorherige\ Zug\ r\u00FCckg\u00E4ngig\ gemacht\ wird.\r\n
+comment2.text=\n\ Verschiebt\ das\ Scrollable-Object\ (die\ Rakete)\ so,\ dass\ der\ vorherige\ Zug\ r\u00FCckg\u00E4ngig\ gemacht\ wird.\n
 numComments=3
