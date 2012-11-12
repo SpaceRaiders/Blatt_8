@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=screenWidth\ screenHeight\ cellsize\ width\ height
-comment0.target=ScrollableWorld(int,\ int,\ int,\ int,\ int)
+comment0.params=screenWidth\ screenHeight\ cellsize\ width\ height\ lvl
+comment0.target=ScrollableWorld(int,\ int,\ int,\ int,\ int,\ int)
 comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Space.\n\ \n
 comment1.params=scrble\ x\ y
 comment1.target=void\ initObj(Scrollable,\ int,\ int)

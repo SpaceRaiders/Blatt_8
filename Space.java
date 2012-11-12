@@ -21,7 +21,14 @@ public class Space extends ScrollableWorld
     public Space()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 600, 1,2400,1600); 
+        super(1000, 600, 1,2400,1600,0); 
+
+        prepare();
+    }
+    public Space(int lvl)
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(1000, 600, 1,2400,1600,lvl); 
 
         prepare();
     }

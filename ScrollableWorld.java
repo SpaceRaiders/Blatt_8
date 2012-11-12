@@ -13,13 +13,13 @@ public class ScrollableWorld extends World
 //private ArrayList<greenfoot.Actor> objects = new ArrayList<greenfoot.Actor>();
     private ArrayList<Scrollable> objects = new ArrayList<Scrollable>();
     //private ArrayList<Point> realPos = new ArrayList<Point>();
-    private int grenzeX,grenzeY,width=2400,height=1600,shiftX=0,shiftY=0;
+    private int grenzeX,grenzeY,width=2400,height=1600,shiftX=0,shiftY=0,lvl;
     
     /**
      * Constructor for objects of class Space.
      * 
      */
-    public ScrollableWorld(int screenWidth, int screenHeight, int cellsize, int width, int height)
+    public ScrollableWorld(int screenWidth, int screenHeight, int cellsize, int width, int height, int lvl)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(screenWidth, screenHeight, cellsize,false); 
@@ -27,6 +27,7 @@ public class ScrollableWorld extends World
         this.height=height;
         grenzeX = screenWidth/2;
         grenzeY= screenHeight/2;
+        this.lvl=lvl;
            
     }
     /**
@@ -47,7 +48,6 @@ public class ScrollableWorld extends World
      */
     public void act()
     {
-        //System.out.println(objects.get(objects.size()-1).toString());
         int dx=0,dy=0;
         if(objects.get(0).getX()<grenzeX && objects.get(0).getX()<= objects.get(0).getRealX())
         {
@@ -71,18 +71,12 @@ public class ScrollableWorld extends World
         }
         //System.out.println("dx: "+dx+"    dy: "+dy);
         
-        /*
-        for(int i =0; i< objects.size();i++)
-        {
-            //realPos.get(i).setX();
-            
-            Actor tmp=objects.get(i);
-            tmp.setLocation(tmp.getX()+dx,tmp.getY()+dy);
-            //tmp.setRealLocation(tmp.getRealX()+dx,tmp.getRealY()+dy);
-        }
-        */
         scroll(dx,dy);
         
+        if(Greenfoot.isKeyDown("h"))
+        {
+            Greenfoot.setWorld(new MainMenu(lvl));
+        }
     }
     public void scroll(int dx, int dy)
     {
