@@ -20,6 +20,13 @@ public class Pose
         this.scrble=scrble;
         
     }
+    public Pose(int x, int y, int rot)
+    {
+        this.x=x;
+        this.y=y;
+        this.rot=rot;
+        
+    }
     /**
      * Aktualisiert die Werte von Pose d.h. die x und y Koordinate und die Drehung.
      * Wird zu Beginn der act() Methode aufgerufen.
@@ -46,5 +53,21 @@ public class Pose
         //System.out.println("Scroll: "+dx+":dx    "+dy+":dy");
         
         scrble.setRotation(rot);
+    }
+    public int getX()
+    {
+        return x;
+    }
+    public int getY()
+    {
+        return y;
+    }
+    public int getRot()
+    {
+        return rot;
+    }
+    public String toString()
+    {
+        return "x/y"+ x +":"+y+"    rot:"+rot;
     }
 }

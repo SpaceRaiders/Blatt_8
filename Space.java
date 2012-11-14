@@ -22,14 +22,28 @@ public class Space extends ScrollableWorld
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1,2400,1600,0); 
-
+        
+        Rocket rocket = new Rocket();
+        initObj(rocket, getWidth()/2, getHeight()/2);
+        prepare();
+    }
+    public Space(Pose pose)
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(1000, 600, 1,2400,1600,0); 
+        
+        Rocket rocket = new Rocket();
+        initObj(rocket, pose.getX(), pose.getY());
+        System.out.println("rakete soll bei:" +pose.getX()+":"+pose.getY());
         prepare();
     }
     public Space(int lvl)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1,2400,1600,lvl); 
-
+        
+        Rocket rocket = new Rocket();
+        initRocket(rocket, getWidth()/2, getHeight()/2);
         prepare();
     }
 
@@ -39,8 +53,7 @@ public class Space extends ScrollableWorld
      */
     private void prepare()
     {
-        Rocket rocket = new Rocket();
-        initObj(rocket, getWidth()/2, getHeight()/2);
+
         /*
         Asteroid asteroid = new Asteroid();
         initObj(asteroid, 666, 416);
@@ -61,6 +74,7 @@ public class Space extends ScrollableWorld
         initObj(blackhole, 761, 423);
         Blackhole blackhole2 = new Blackhole();
         initObj(blackhole2, 1285, 255);
+        /*
         Shield shield = new Shield();
         initObj(shield, 331, 357);
         Shield shield2 = new Shield();
@@ -80,5 +94,10 @@ public class Space extends ScrollableWorld
         Inventory inventory = new Inventory();
         addObject(inventory, 958, 307);
         inventory.setLocation(950, 300);
+         */
+        Portal portal = new Portal(Space.class);
+        initObj(portal, 171, 296);
+        Portal portal2 = new Portal(Andromeda.class);
+        initObj(portal2, 1507, 509);
     }
 }

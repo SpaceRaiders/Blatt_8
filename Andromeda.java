@@ -17,6 +17,21 @@ public class Andromeda extends ScrollableWorld
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1,1200,800,lvl); 
-        initObj(new Rocket(),400,300);
+        initRocket(new Rocket(),400,300);
+         
+        prepare();
+    }
+    public Andromeda(Pose pose)
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(1000, 600, 1,2400,1600,0); 
+        initRocket(new Rocket(),pose.getX(),pose.getY());
+         
+        prepare();
+    }
+    public void prepare()
+    {
+         initObj(new Rocket(),400,300);
+         initObj(new Asteroid(),300,600);
     }
 }

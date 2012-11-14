@@ -31,6 +31,19 @@ public class ScrollableWorld extends World
            
     }
     /**
+     * @param rocket Objekt von Rocket, das hinzugefügt wird.
+     * @param x X-Koordinate
+     * @param y Y-Koordinate
+     */
+    public void initRocket(Scrollable rocket, int x,int y)
+    {
+        addObject(rocket, x, y);
+        objects.add(rocket);
+        rocket.init(x-shiftX,y-shiftY,this);
+        act();
+        //realPos.add(new Point(x,y));
+    }
+    /**
      * @param scrble Objekt einer Subklasse von Scrollable, das hinzugefügt wird.
      * @param x X-Koordinate
      * @param y Y-Koordinate

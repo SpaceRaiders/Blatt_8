@@ -122,6 +122,8 @@ public class Rocket extends Scrollable
     public void act() 
     {
        pose.update();
+       System.out.println(getPose());
+       System.out.println(pose);
        mouse = Greenfoot.getMouseInfo();
         
         moveAndTurn();
@@ -313,5 +315,12 @@ public class Rocket extends Scrollable
     public void addItem(Item new_item)
     {
         inventory.storeItem(new_item);
+    }
+    /**
+     * Getter für Pose
+     */
+    public Pose getPose()
+    {
+        return new Pose(getX(),getY(),getRotation());
     }
 }

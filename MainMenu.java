@@ -12,6 +12,8 @@ public class MainMenu extends World
     private ArrayList<World> worlds = new ArrayList<World>();
     private int lvl=0;
     private final int MAX_LVL=2;
+    private Class next=null;
+    
     /**
      * Constructor for objects of class MainMenu.
      * 
@@ -20,14 +22,13 @@ public class MainMenu extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        worlds.add(new Space(0));
-        worlds.add(new Andromeda(1));
+        addLvl();
+        next=worlds.get(0).getClass();
     }
     public MainMenu(int lvl)
     {
         super(600, 400, 1); 
-        worlds.add(new Space(0));
-        worlds.add(new Andromeda(1));
+        addLvl();
         if(lvl<MAX_LVL)
         {
             this.lvl=lvl+1;
@@ -36,9 +37,41 @@ public class MainMenu extends World
         {
             this.lvl=0;
         }
+        next=worlds.get(lvl).getClass();
     }
+    public MainMenu(Class cls, Pose pose)
+    {
+        super(600, 400, 1); 
+        addLvl(pose);
+        System.out.println(cls);
+        next=cls;
+    }
+    private void addLvl(Pose pose)
+    {
+        
+        worlds.add(new Space(pose));
+        worlds.add(new Andromeda(pose));
+    }
+    
+    private void addLvl()
+    {
+        
+        worlds.add(new Space(0));
+        worlds.add(new Andromeda(1));
+    }
+    
     public void act()
     {
+        
+        Greenfoot.setWorld(get(next));
+        /*
+        if(Greenfoot.isKeyDown("n"))
+        {
+            
+            //Greenfoot.setWorld(worlds.get(lvl));
+            Greenfoot.setWorld(get(Andromeda.class));
+        }
+        
         if(Greenfoot.isKeyDown("h"))
         {
             
@@ -50,7 +83,7 @@ public class MainMenu extends World
             
             //Greenfoot.setWorld(worlds.get(lvl));
             Greenfoot.setWorld(get(Andromeda.class));
-        }
+        }*/
     }
     public World get(Class cls)
     {
