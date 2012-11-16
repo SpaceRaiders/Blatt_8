@@ -2,7 +2,7 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=0314a9b103ff84c490868df731ca7c08cf45c03a
-class.Andromeda.image=space.jpg
+class.Andromeda.image=Orion_map.jpg
 class.Andromeda.superclass=ScrollableWorld
 class.Asteroid.image=asteroid.png
 class.Asteroid.superclass=Scrollable
@@ -161,8 +161,8 @@ dependency8.type=UsesDependency
 dependency9.from=ScrollableWorld
 dependency9.to=Space
 dependency9.type=UsesDependency
-mainWindow.height=982
-mainWindow.width=1318
+mainWindow.height=983
+mainWindow.width=1314
 mainWindow.x=0
 mainWindow.y=25
 package.numDependencies=43
