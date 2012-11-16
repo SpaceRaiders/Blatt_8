@@ -1,9 +1,11 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Portal()
+comment0.text=\r\n\ \r\n
 comment1.params=next
 comment1.target=Portal(java.lang.Class)
+comment1.text=\r\n\ \r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Portal\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.text=\r\n\ Diese\ Methode\ wird\ immer\ angerufen,\ wenn\ die\ Taste\ 'Act'\ oder\ 'Run'\ gedr\u00FCckt\ ist.\r\n\ Hier\ wird\ auf\ Mausklicks\ reagiert\ und\ eine\ Object\ der\ Bulet\ Klasse\ der\ Welt\ hinzugef\u00FCgt.\r\n
 numComments=3

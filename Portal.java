@@ -1,29 +1,41 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
- * Write a description of class Portal here.
+ * Klasse Portal : Dieses Item erlaubt, eine Rackette die Welt zu wechseln.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
+ * @version 16-11-2012
  */
 public class Portal extends Scrollable
 {
-    private Class nextLvl=Space.class;
+    /**
+     * Dieser Attribut speichert die Welt, wo das Portal führt.
+     */
+    private Class nextLvl = Space.class;
+    
+    /**
+     * 
+     */
     public Portal()
     {
         
     }
+    
+    /**
+     * 
+     */
     public Portal(Class next)
     {
-        nextLvl=next;
+        nextLvl = next;
     }
+    
     /**
-     * Act - do whatever the Portal wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Diese Methode wird immer angerufen, wenn die Taste 'Act' oder 'Run' gedrückt ist.
+     * Hier wird auf Mausklicks reagiert und eine Object der Bulet Klasse der Welt hinzugefügt.
      */
     public void act() 
     {
-        Rocket rocket=(Rocket)getOneIntersectingObject(Rocket.class);
+        Rocket rocket = (Rocket)getOneIntersectingObject(Rocket.class);
         if(rocket!=null )
         {
             System.out.println(rocket.getPose());
