@@ -11,7 +11,7 @@ public class Portal extends Scrollable
     /**
      * Dieser Attribut speichert die Welt, wo das Portal führt.
      */
-    private Class nextLvl = Space.class;
+    private Class nextLvl = Andromeda.class;
     
     /**
      * 

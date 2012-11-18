@@ -56,9 +56,8 @@ public class Inventory extends Actor
         World world = scrble.getWorld();
         scrble.getScrWorld().removeObject(scrble);
         world.addObject(scrble, 955, posItem_y);
-            
         // Das nächste Item wird weiter nach unten gezeigt.
-         posItem_y += 100;
+        posItem_y += 100;
     }
     
     /**
@@ -69,15 +68,13 @@ public class Inventory extends Actor
     public void removeScrble(int x, int y)
     {
         get().getWorld().removeObject(get());
-        get().getScrWorld().initObj(get(), x, y);
+        get().getScrWorld().initObj(get(), x, y + 150);
         items.clear();
-        System.out.println("list item size : " + items.size());
         posItem_y = 55;
-
     }
     
     /**
-     * Kurze Schribweise von get(0)
+     * Kurze Schreibweise von get(0)
      */
     public Scrollable get()
     {

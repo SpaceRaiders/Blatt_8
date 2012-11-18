@@ -43,7 +43,7 @@ public class MainMenu extends World
     {
         super(600, 400, 1); 
         addLvl(pose);
-        System.out.println(cls);
+        //System.out.println(cls);
         next=cls;
     }
     private void addLvl(Pose pose)
