@@ -82,7 +82,7 @@ public class Inventory extends Actor
     }
     
     /**
-     * Kurze Schribweise von get(0)
+     * Kurze Schreibweise von get(0)
      */
     public Scrollable get()
     {
