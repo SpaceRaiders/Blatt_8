@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList ;
 import java.awt.Point ;
 /**
- * Das WEltall. Jetzt mit SCrollen . TODO muss auf kollisionen prüfen und dann dodamge o.Ä.
+ * Das WEltall. Jetzt mit SCrollen . 
  * 
  * @author (your name) 
  * @version (a version number or a date)
