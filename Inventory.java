@@ -27,7 +27,7 @@ public class Inventory extends Actor
     final private int ITEM_MAX = 1;
       
     /**
-     * Diese Methode
+     * Diese Methode ist noch zu machen. Momentan tut sie nichts
      */
     public void storeActor(Actor actor)
     {
@@ -48,26 +48,17 @@ public class Inventory extends Actor
     
     /**
      * Speicehrt ein Scrollable-Object im inventar. 
-     * 
      */
     public void storeScrble(Scrollable scrble)
     {
-        //if(!isEmpty())
-        //{
-            //removeScrble(scrble.getX(),scrble.getY());
-        //}
-        //else
-        //{
-            System.out.println("add new Item : " + scrble);
-            items.add(scrble);
-            World world = scrble.getWorld();
-            scrble.getScrWorld().removeObject(scrble);
-            world.addObject(scrble,955, posItem_y);
+        System.out.println("add new Item : " + scrble);
+        items.add(scrble);
+        World world = scrble.getWorld();
+        scrble.getScrWorld().removeObject(scrble);
+        world.addObject(scrble, 955, posItem_y);
             
-            // Das nächste Item wird weiter nach unten gezeigt.
-            posItem_y += 100;
-        //}
-        
+        // Das nächste Item wird weiter nach unten gezeigt.
+         posItem_y += 100;
     }
     
     /**
@@ -75,10 +66,14 @@ public class Inventory extends Actor
      * @param x X-Koordinate wo das Objekt hinzugefügt wird
      * @param y Y-Koordinate wo das Objekt hinzugefügt wird
      */
-    public void removeScrble(int x,int y)
+    public void removeScrble(int x, int y)
     {
         get().getWorld().removeObject(get());
         get().getScrWorld().initObj(get(), x, y);
+        items.clear();
+        System.out.println("list item size : " + items.size());
+        posItem_y = 55;
+
     }
     
     /**
@@ -98,7 +93,6 @@ public class Inventory extends Actor
     public Scrollable get(int i)
     {
         if (i < 0 || i >= items.size())
-        //if (items.size()<=0)
         {
             return null;
         }
@@ -107,6 +101,10 @@ public class Inventory extends Actor
             return items.get(i);
         }
     }
+    
+    /**
+     * Diese Funktion gibt zurück, ob das Inventar leer oder nicht ist.
+     */
     public boolean isEmpty()
     {
         if(items.size()==0)

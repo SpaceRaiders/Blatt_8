@@ -45,4 +45,13 @@ public class Shield extends Item
             firstCollision = true;
         }
     }
+    
+    /**
+     * Diese Funktion Fragt, ob man in der Act() Funktion wieder die
+     * Kollisionen mit der Rackette checken muss.
+     */
+    public void setCheckCollision(boolean check)
+    {
+        firstCollision = check;
+    }
 }

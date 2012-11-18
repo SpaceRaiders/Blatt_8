@@ -2,4 +2,7 @@
 comment0.params=
 comment0.target=void\ act()
 comment0.text=\r\n\ Diese\ Methode\ wird\ immer\ angerufen,\ wenn\ die\ Taste\ 'Act'\ oder\ 'Run'\ gedr\u00FCckt\ ist.\r\n\ Hier\ wird\ auf\ Mausklicks\ reagiert\ und\ eine\ Object\ der\ Bulet\ Klasse\ der\ Welt\ hinzugef\u00FCgt.\r\n
-numComments=1
+comment1.params=check
+comment1.target=void\ setCheckCollision(boolean)
+comment1.text=\r\n\ Diese\ Funktion\ Fragt,\ ob\ man\ in\ der\ Act()\ Funktion\ wieder\ die\r\n\ Kollisionen\ mit\ der\ Rackette\ checken\ muss.\r\n
+numComments=2

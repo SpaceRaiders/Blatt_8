@@ -16,5 +16,14 @@ public class Item extends Scrollable
     public void act() 
     {
         
-    }    
+    }
+    
+    /**
+     * Diese Funktion Fragt, ob man in der Act() Funktion wieder die
+     * Kollisionen mit der Rackette checken muss.
+     */
+    public void setCheckCollision(boolean check)
+    {
+
+    }
 }

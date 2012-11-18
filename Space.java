@@ -99,5 +99,20 @@ public class Space extends ScrollableWorld
         initObj(portal, 171, 296);
         Portal portal2 = new Portal(Andromeda.class);
         initObj(portal2, 1507, 509);
+        Shield shield = new Shield();
+        initObj(shield, 342, 551);
+        Shield shield2 = new Shield();
+        initObj(shield2, 919, 138);
+        Inventory inventory = new Inventory();
+        addObject(inventory, 956, 305);
+        inventory.setLocation(949, 300);
+        Shield shield3 = new Shield();
+        initObj(shield3, 205, 549);
+        Shield shield4 = new Shield();
+        initObj(shield4, 506, 555);
+        Shield shield5 = new Shield();
+        initObj(shield5, 633, 564);
+        shield5.setLocation(590, 560);
+        shield4.setLocation(467, 555);
     }
 }

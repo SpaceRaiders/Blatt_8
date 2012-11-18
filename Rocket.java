@@ -47,8 +47,8 @@ public class Rocket extends Scrollable
      * Enthält alle Sounds, die abgespielen werden sollen wenn die Rackette eine Asteroid
      * berührt
      */
-    
     private ArrayList<GreenfootSound> sounds = new ArrayList<GreenfootSound>();
+    
     /**
      * Speichert die Position falls die Rakete auf ein Hindernis trifft
      */
@@ -73,7 +73,7 @@ public class Rocket extends Scrollable
     /**
      * Speichert ob man schon etwas abgeworfen hat
      */
-    private boolean dropped=false;
+    private boolean dropped = false;
     /**
      * Sound wenn etwas abegeworfen wird
      */
@@ -122,8 +122,8 @@ public class Rocket extends Scrollable
     public void act() 
     {
        pose.update();
-       System.out.println(getPose());
-       System.out.println(pose);
+       //System.out.println(getPose());
+       //System.out.println(pose);
        mouse = Greenfoot.getMouseInfo();
         
         moveAndTurn();
@@ -271,12 +271,12 @@ public class Rocket extends Scrollable
             if(!inventory.isEmpty()&&!dropped)
             {
                 inventory.removeScrble(getX()+10,getY()+10);
-                dropped=true;
+                dropped = true;
             }
             else if(!drop.isPlaying())
             {
-                
                 Greenfoot.playSound("biglaser.wav");
+                dropped = false;
             }
         }
         if(getOneIntersectingObject(Obstacle.class)!=null && !(inventory.get(itemBeingUsed -1) instanceof Shield))//&& Greenfoot.isKeyDown("space"))
