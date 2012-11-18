@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.ArrayList ;
 
 /**
@@ -7,7 +7,7 @@ import java.util.ArrayList ;
  * Sie werden dann am rechten Bildschirmrand dargestellt.
  * 
  * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
- * @version 09-11-2012
+ * @version 18-11-2012
  */
 public class Inventory extends Actor
 {
@@ -51,7 +51,7 @@ public class Inventory extends Actor
      */
     public void storeScrble(Scrollable scrble)
     {
-        System.out.println("add new Item : " + scrble);
+        //System.out.println("add new Item : " + scrble);
         items.add(scrble);
         World world = scrble.getWorld();
         scrble.getScrWorld().removeObject(scrble);
@@ -62,8 +62,8 @@ public class Inventory extends Actor
     
     /**
      * Entfernt ein Objekt aus dem Inventar und fügt es der eigentlichen Welt hinzu.
-     * @param x X-Koordinate wo das Objekt hinzugefügt wird
-     * @param y Y-Koordinate wo das Objekt hinzugefügt wird
+     * @param x X-Koordinate wo das Objekt hinzugefügt wird.
+     * @param y Y-Koordinate wo das Objekt hinzugefügt wird (wir von 150 incrementiert).
      */
     public void removeScrble(int x, int y)
     {
@@ -74,7 +74,7 @@ public class Inventory extends Actor
     }
     
     /**
-     * Kurze Schreibweise von get(0)
+     * Kurze Schreibweise von get(0).
      */
     public Scrollable get()
     {
@@ -85,7 +85,7 @@ public class Inventory extends Actor
      * Gibt das Objekt mit Index i aus dem Inventar. Der Index beginnt mit 0.
      * Wenn kein Objekt im Inentar ist, wird null zurückgegeben.
      * 
-     * @param i Index des Objektes im Inventar
+     * @param i Index des Objektes im Inventar.
      */
     public Scrollable get(int i)
     {
