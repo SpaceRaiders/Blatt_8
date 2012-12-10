@@ -20,7 +20,7 @@ public class Rocket extends Scrollable
 
     /**
      * Definiert Wie heil die Rackette ist.
-     */
+     */ 
     private int hp = 10;
     
     /**
@@ -33,10 +33,7 @@ public class Rocket extends Scrollable
      */
     private int speed = 1;
     
-    /**
-     * Definiert wie viele Astronauten gerettet wurden.
-     */
-    private int numberSavedPeople = 0;
+    
     
     /**
      * 
@@ -128,7 +125,7 @@ public class Rocket extends Scrollable
 
        mouse = Greenfoot.getMouseInfo();
         
-        moveAndTurn();
+       moveAndTurn();
        //System.out.println(getX()+":"+ getRealX()+"        "+getY()+":"+getRealY());
         
         if(Greenfoot.mousePressed(null))
@@ -168,15 +165,6 @@ public class Rocket extends Scrollable
     }
     
     /**
-     * Für 1.5 : Diese Methode zählt alle Kollision zwischen die Rakete und die Asteroiden.
-     * In diese Funktion wird auch definiert, welche sound von der Playlist abgespielt sein soll.
-     */
-    public void collisionCounter()
-    {
-        collisions += 1;
-    }
-    
-    /**
      * Steuerung des Raumschiffs durch den Spieler und allg. Bewegung.
      * Steuerung via Pfeiltasten oder WASD.
      */
@@ -202,72 +190,7 @@ public class Rocket extends Scrollable
             speed = -1;
         }
         
-        else if(Greenfoot.isKeyDown("1"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 1");
-            }
-            itemBeingUsed = 1;
-            takingItem = true;
-            useItem(1);
-        }
-        if(Greenfoot.isKeyDown("2"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 2");
-            }
-            itemBeingUsed = 2;
-            takingItem = true;
-            useItem(2);
-        }
-        if(Greenfoot.isKeyDown("3"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 3");
-            }
-            itemBeingUsed = 3;
-            takingItem = true;
-            useItem(3);
-        }
-        if(Greenfoot.isKeyDown("4"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 4");
-            }
-            itemBeingUsed = 4;
-            takingItem = true;
-            useItem(4);
-        }
-        if(Greenfoot.isKeyDown("5"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 5");
-            }
-            itemBeingUsed = 5;
-            takingItem = true;
-            useItem(5);
-        }
-        if(Greenfoot.isKeyDown("6"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 6");
-            }
-            itemBeingUsed = 6;
-            takingItem = true;
-            useItem(6);
-        }
         
-        if(!Greenfoot.isKeyDown("1") && !Greenfoot.isKeyDown("2") && !Greenfoot.isKeyDown("3") && !Greenfoot.isKeyDown("4") && !Greenfoot.isKeyDown("5") && !Greenfoot.isKeyDown("6"))
-        {
-            itemBeingUsed = 0;
-            takingItem = false;
-        }
         if(Greenfoot.isKeyDown("space"))
         {
             if(!inventory.isEmpty()&&!dropped)
@@ -289,29 +212,6 @@ public class Rocket extends Scrollable
     }
 
     /**
-     * 
-     */
-    public void useItem(int itemNumber)
-    {
-        
-    }
-    
-    /**
-     * Diese Funktion erhöht die gespeicherte Zahl der gerettete Menschen von 1 und überprüft, ob
-     * alle Menschen gerettet sind. Falls ja, dann wird ein Nachricht angezeigt, dass das Spiel
-     * gewonnen ist.
-     */
-    public void incrementSavedPeople()
-    {
-        numberSavedPeople++;
-        if (numberSavedPeople >= 3)
-        {
-            System.out.println("Sie haben alle Astronauten gerettet. Das Spiel ist Gewonnen.");
-            Greenfoot.stop();
-        }
-    }
-    
-    /**
      * Fügt ein Objekt in das Rackettes Inventar.
      */
     public void addItem(Item new_item)
@@ -324,5 +224,9 @@ public class Rocket extends Scrollable
     public Pose getPose()
     {
         return new Pose(getRealX(),getRealY(),getRotation());
+    }
+    public String toString()
+    {
+        return getPose()+"";
     }
 }
