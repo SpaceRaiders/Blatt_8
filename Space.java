@@ -21,7 +21,7 @@ public class Space extends ScrollableWorld
     public Space()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 600, 1,2400,1600,0); 
+        super(1000, 600, 1,2400,1600); 
         
         Rocket rocket = new Rocket();
         initObj(rocket, getWidth()/2, getHeight()/2);
@@ -30,7 +30,7 @@ public class Space extends ScrollableWorld
     public Space(Pose pose)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 600, 1,2400,1600,0); 
+        super(1000, 600, 1,2400,1600); 
         
         Rocket rocket = new Rocket();
         initObj(rocket, pose.getX(), pose.getY());
@@ -40,7 +40,7 @@ public class Space extends ScrollableWorld
     public Space(int lvl)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 600, 1,2400,1600,lvl); 
+        super(1000, 600, 1,2400,1600); 
         
         Rocket rocket = new Rocket();
         initRocket(rocket, getWidth()/2, getHeight()/2);
@@ -90,15 +90,17 @@ public class Space extends ScrollableWorld
         Shield shield6 = new Shield();
         initObj(shield6, 900, 536);
         Shield shield7 = new Shield();
-        initObj(shield7, 1200, 536);
+        initObj(shield7, 1200, 536); 
+        */
         Inventory inventory = new Inventory();
         addObject(inventory, 958, 307);
         inventory.setLocation(950, 300);
-         */
-        Portal portal = new Portal(Space.class);
+        
+        Portal portal = new Portal(Space.class,700,300);
         initObj(portal, 171, 296);
-        Portal portal2 = new Portal(Andromeda.class);
+        Portal portal2 = new Portal(Andromeda.class,200,300);
         initObj(portal2, 1507, 509);
+        /*
         Shield shield = new Shield();
         initObj(shield, 342, 551);
         Shield shield2 = new Shield();
@@ -114,5 +116,6 @@ public class Space extends ScrollableWorld
         initObj(shield5, 633, 564);
         shield5.setLocation(590, 560);
         shield4.setLocation(467, 555);
+        */
     }
 }

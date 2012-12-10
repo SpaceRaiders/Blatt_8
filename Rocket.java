@@ -34,11 +34,6 @@ public class Rocket extends Scrollable
     private int speed = 1;
     
     /**
-     * Definiert wie viele Astronauten gerettet wurden.
-     */
-    private int numberSavedPeople = 0;
-    
-    /**
      * 
      */
     private GreenfootImage img = null;
@@ -77,7 +72,18 @@ public class Rocket extends Scrollable
     /**
      * Sound wenn etwas abegeworfen wird
      */
-    private GreenfootSound drop= new GreenfootSound("biglaser.wav");
+    private GreenfootSound drop = new GreenfootSound("biglaser.wav");
+    
+    /**
+     * Ringbuffer für Koordiaten und drehung
+     */
+    private RingBuffer ringX , ringY , ringRot;
+    
+    /**
+     * Diese Konstante enthält die Grösse der 3 Ringpuffers von der Rackette.
+     */
+    private final int CAPACITY_RINGBUFFER = 1000;
+
     
     public Rocket()
     {
@@ -85,7 +91,11 @@ public class Rocket extends Scrollable
         super(false);
         makePlaylist("bomb-1.wav,bomb-2.mp3,");
         pose = new Pose(this);
-        inventory= new Inventory();
+        inventory = new Inventory();
+        
+        ringX =  new RingBuffer(CAPACITY_RINGBUFFER);
+        ringY =  new RingBuffer(CAPACITY_RINGBUFFER);
+        ringRot =  new RingBuffer(CAPACITY_RINGBUFFER);
     }
 
     /**
@@ -96,8 +106,11 @@ public class Rocket extends Scrollable
         super(false);
         makePlaylist(playlist);
         pose = new Pose(this);
+        inventory = new Inventory();
         
-        inventory= new Inventory();
+        ringX =  new RingBuffer(CAPACITY_RINGBUFFER);
+        ringY =  new RingBuffer(CAPACITY_RINGBUFFER);
+        ringRot =  new RingBuffer(CAPACITY_RINGBUFFER);
     }
     /**
      * Diese Methode herstellt eine Playliste für ein Objekt "Rocket"
@@ -111,7 +124,7 @@ public class Rocket extends Scrollable
         {
             j = playlist.indexOf(",", i+1);
             sounds.add(new GreenfootSound(playlist.substring(i, j)));
-            i = j+1;
+            i = j + 1;
         }
     }
     
@@ -128,7 +141,7 @@ public class Rocket extends Scrollable
 
        mouse = Greenfoot.getMouseInfo();
         
-        moveAndTurn();
+       moveAndTurn();
        //System.out.println(getX()+":"+ getRealX()+"        "+getY()+":"+getRealY());
         
         if(Greenfoot.mousePressed(null))
@@ -139,7 +152,18 @@ public class Rocket extends Scrollable
            space.initObj(new Bullet(getX(),getY(),mouse.getX(),mouse.getY()),getX(),getY());
            //System.out.println(getRealX()+":"+getRealY()+"     "+getX()+":"+getY());
         }
-        
+        if(!Greenfoot.isKeyDown("r"))
+        {
+          ringX.push(getRealX());
+          //System.out.println("push "+ getX() + " real : " + getRealX());
+          ringY.push(getRealY());
+          ringRot.push(getRotation());
+        }
+        else if(!ringX.isEmpty())
+        {
+            setLocation(ringX.pop() + getScrWorld().getShiftX(), ringY.pop() + getScrWorld().getShiftY());
+            setRotation(ringRot.pop());
+        }
     }
     
     /**
@@ -168,15 +192,6 @@ public class Rocket extends Scrollable
     }
     
     /**
-     * Für 1.5 : Diese Methode zählt alle Kollision zwischen die Rakete und die Asteroiden.
-     * In diese Funktion wird auch definiert, welche sound von der Playlist abgespielt sein soll.
-     */
-    public void collisionCounter()
-    {
-        collisions += 1;
-    }
-    
-    /**
      * Steuerung des Raumschiffs durch den Spieler und allg. Bewegung.
      * Steuerung via Pfeiltasten oder WASD.
      */
@@ -202,72 +217,7 @@ public class Rocket extends Scrollable
             speed = -1;
         }
         
-        else if(Greenfoot.isKeyDown("1"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 1");
-            }
-            itemBeingUsed = 1;
-            takingItem = true;
-            useItem(1);
-        }
-        if(Greenfoot.isKeyDown("2"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 2");
-            }
-            itemBeingUsed = 2;
-            takingItem = true;
-            useItem(2);
-        }
-        if(Greenfoot.isKeyDown("3"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 3");
-            }
-            itemBeingUsed = 3;
-            takingItem = true;
-            useItem(3);
-        }
-        if(Greenfoot.isKeyDown("4"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 4");
-            }
-            itemBeingUsed = 4;
-            takingItem = true;
-            useItem(4);
-        }
-        if(Greenfoot.isKeyDown("5"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 5");
-            }
-            itemBeingUsed = 5;
-            takingItem = true;
-            useItem(5);
-        }
-        if(Greenfoot.isKeyDown("6"))
-        {
-            if (!takingItem)
-            {
-                System.out.println("Take Item 6");
-            }
-            itemBeingUsed = 6;
-            takingItem = true;
-            useItem(6);
-        }
         
-        if(!Greenfoot.isKeyDown("1") && !Greenfoot.isKeyDown("2") && !Greenfoot.isKeyDown("3") && !Greenfoot.isKeyDown("4") && !Greenfoot.isKeyDown("5") && !Greenfoot.isKeyDown("6"))
-        {
-            itemBeingUsed = 0;
-            takingItem = false;
-        }
         if(Greenfoot.isKeyDown("space"))
         {
             if(!inventory.isEmpty()&&!dropped)
@@ -286,31 +236,9 @@ public class Rocket extends Scrollable
             //System.out.println("pose rest"+getOneIntersectingObject(Obstacle.class));
             pose.resetActor();
         }
-    }
-
-    /**
-     * 
-     */
-    public void useItem(int itemNumber)
-    {
         
     }
-    
-    /**
-     * Diese Funktion erhöht die gespeicherte Zahl der gerettete Menschen von 1 und überprüft, ob
-     * alle Menschen gerettet sind. Falls ja, dann wird ein Nachricht angezeigt, dass das Spiel
-     * gewonnen ist.
-     */
-    public void incrementSavedPeople()
-    {
-        numberSavedPeople++;
-        if (numberSavedPeople >= 3)
-        {
-            System.out.println("Sie haben alle Astronauten gerettet. Das Spiel ist Gewonnen.");
-            Greenfoot.stop();
-        }
-    }
-    
+
     /**
      * Fügt ein Objekt in das Rackettes Inventar.
      */
@@ -318,11 +246,21 @@ public class Rocket extends Scrollable
     {
         inventory.storeItem(new_item);
     }
+    
     /**
      * Getter für Pose
      */
     public Pose getPose()
     {
-        return new Pose(getRealX(),getRealY(),getRotation());
+        return new Pose(getRealX(), getRealY(), getRotation());
     }
+    
+    /**
+     * 
+     */
+    public String toString()
+    {
+        return getPose() + "";
+    }
+    
 }

@@ -50,7 +50,6 @@ public class Asteroid extends Scrollable
             if(!colliding)
             {
                 rocket.receiveDamage();
-                rocket.collisionCounter();
             }
             colliding = true;
         }

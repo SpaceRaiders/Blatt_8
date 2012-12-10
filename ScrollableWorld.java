@@ -13,13 +13,13 @@ public class ScrollableWorld extends World
 //private ArrayList<greenfoot.Actor> objects = new ArrayList<greenfoot.Actor>();
     private ArrayList<Scrollable> objects = new ArrayList<Scrollable>();
     //private ArrayList<Point> realPos = new ArrayList<Point>();
-    private int grenzeX,grenzeY,width=2400,height=1600,shiftX=0,shiftY=0,lvl;
-    
+    private int grenzeX,grenzeY,width=2400,height=1600,shiftX=0,shiftY=0,widthHUD=150;
+    private HUD hud;
     /**
      * Constructor for objects of class Space.
      * 
      */
-    public ScrollableWorld(int screenWidth, int screenHeight, int cellsize, int width, int height, int lvl)
+    public ScrollableWorld(int screenWidth, int screenHeight, int cellsize, int width, int height)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(screenWidth, screenHeight, cellsize,false); 
@@ -27,8 +27,16 @@ public class ScrollableWorld extends World
         this.height=height;
         grenzeX = screenWidth/2;
         grenzeY= screenHeight/2;
-        this.lvl=lvl;
            
+        //createHUD();
+        widthHUD=0;
+    }
+    private void createHUD()
+    {
+        hud=new HUD();
+        addObject(hud,getWidth()-75,getHeight()/2);
+        
+        
     }
     /**
      * @param rocket Objekt von Rocket, das hinzugefügt wird.
@@ -56,31 +64,32 @@ public class ScrollableWorld extends World
         //realPos.add(new Point(x,y));
     }
     /**
-     * Act-Methode der World, achtet auf die Position der Rakete bzw des Ersten Object in Objects ( objects.get(0)) und verschieb alle Objekte dementsprechend.
+     * Act-Methode der World, achtet auf die Position der Rakete ( getRocket()) und verschieb alle Objekte dementsprechend.
      * 
      */
     public void act()
     {
         int dx=0,dy=0;
-        if(objects.get(0).getX()<grenzeX && objects.get(0).getX()<= objects.get(0).getRealX())
+        if(getRocket().getX()<grenzeX && getRocket().getX()<= getRocket().getRealX())
         {
-            dx= grenzeX - objects.get(0).getX() ;
+            dx= grenzeX - getRocket().getX() ;
             if(shiftX>0)// das hier sollte niemals kommen :D
             {
                 System.out.println(shiftX+"  bei If 1");
             }
         }
-        if( objects.get(0).getX()>getWidth()-grenzeX && getWidth()-objects.get(0).getX()<= width-objects.get(0).getRealX())
+        if( getRocket().getX()>getWidth()-grenzeX && getWidth()-getRocket().getX()<= width-getRocket().getRealX())
         {
-            dx= getWidth()-(grenzeX+objects.get(0).getX());
+           // System.out.println("rechts");
+            dx= getWidth()-(grenzeX+getRocket().getX());
         }
-        if(objects.get(0).getY()<grenzeY && objects.get(0).getY()<= objects.get(0).getRealY())
+        if(getRocket().getY()<grenzeY && getRocket().getY()<= getRocket().getRealY())
         {
-            dy= grenzeY - objects.get(0).getY()  ;
+            dy= grenzeY - getRocket().getY()  ;
         }
-        if(objects.get(0).getY()>getHeight()-grenzeY && getHeight()-objects.get(0).getY()<= height-objects.get(0).getRealY())
+        if(getRocket().getY()>getHeight()-grenzeY && getHeight()-getRocket().getY()<= height-getRocket().getRealY())
         {
-            dy= getHeight()-(grenzeY+objects.get(0).getY());
+            dy= getHeight()-(grenzeY+getRocket().getY());
         }
         //System.out.println("dx: "+dx+"    dy: "+dy);
         
@@ -88,7 +97,7 @@ public class ScrollableWorld extends World
         
         if(Greenfoot.isKeyDown("h"))
         {
-            Greenfoot.setWorld(new MainMenu(lvl));
+            Greenfoot.setWorld(new MainMenu());
         }
     }
     public void scroll(int dx, int dy)
@@ -106,6 +115,24 @@ public class ScrollableWorld extends World
             //tmp.setRealLocation(tmp.getRealX()+dx,tmp.getRealY()+dy);
         }
     }
+    /**
+     * @return die Rakete
+     */
+    public Rocket getRocket()
+    {
+        //System.out.println(objects.size());
+        for (Scrollable scrble : objects) {
+            if (scrble.getClass() == Rocket.class) {
+                return (Rocket)scrble;
+            }
+            else{
+                //System.out.println(scrble+" ist keine Rakete");
+            }
+        }
+        System.out.println("Oo   keine Rakete da?");
+        return null;
+    }
+    
     /**
      * Beim entfernen zu nutzen, amsonsten gibs Exception, weil beim Scrollen auf den Actor zugegriffen wird obwohl er nicht mehr in der Welt ist.
      * 

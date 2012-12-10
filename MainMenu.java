@@ -56,8 +56,8 @@ public class MainMenu extends World
     private void addLvl()
     {
         
-        worlds.add(new Space(0));
-        worlds.add(new Andromeda(1));
+        worlds.add(new Space());
+        worlds.add(new Andromeda());
     }
     
     public void act()
