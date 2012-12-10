@@ -1,0 +1,38 @@
+\documentclass{pi1}
+
+\begin{document}
+
+% \maketitle{Nummer}{Abgabedatum}{Tutor-Name}{Gruppennummer}
+%           {Teilnehmer 1}{Teilnehmer 2}{Teilnehmer 3}
+\maketitle{6}{02.12.2012}{Jan Malburg}{3}
+          {Vitalij Kochno}{Yorick Netzer}{Christophe Stilmant}
+
+\section{Der Herr der Tests}
+\subsection{Testf\"alle definieren}
+
+\lstinputlisting[firstnumber=1,firstline=1,lastline=142]{../RingBufferTest.java}
+
+\begin{itemize}
+	\item Test1: Um zu sehen ob die Array wirklich leer ist.
+	\item Test2: Schauen ob die Array gr\"osser wird.
+	\item Test3: \"Uberpr\"uft das \"alteste Element.
+	\item Test4: F\"ugt eine Liste von 0 bis i dazu, und schaut ob 0 das \"alteste ist.
+	\item Test5: Array wird \"uberf\"ullt und die L\"ange sollte aber gleich bleiben
+	\item Test6: Hier wollen die Reihefolge \"uberpr\"ufen, ob diese auch eingehalten wird. 
+\end{itemize}
+
+\subsection{Implementierung}
+
+\lstinputlisting[firstnumber=16,firstline=16,lastline=200]{../RingBuffer.java}
+
+\section{Spiel's noch einmal, Sam}
+Hier definieren wir drei RingBuffer f\"ur x,y und die Rotation.
+
+\lstinputlisting[firstnumber=77,firstline=77,lastline=114]{../Rocket.java}
+
+Anschliessend f\"uhren wir sie aus. Mit ''r'' wird das Replay abgespielt.
+
+\lstinputlisting[firstnumber=155,firstline=155,lastline=166]{../Rocket.java}
+	
+\end{document}
+

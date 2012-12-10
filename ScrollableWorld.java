@@ -64,7 +64,7 @@ public class ScrollableWorld extends World
         //realPos.add(new Point(x,y));
     }
     /**
-     * Act-Methode der World, achtet auf die Position der Rakete bzw des Ersten Object in Objects ( getRocket()) und verschieb alle Objekte dementsprechend.
+     * Act-Methode der World, achtet auf die Position der Rakete ( getRocket()) und verschieb alle Objekte dementsprechend.
      * 
      */
     public void act()

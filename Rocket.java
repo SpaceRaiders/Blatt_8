@@ -33,8 +33,6 @@ public class Rocket extends Scrollable
      */
     private int speed = 1;
     
-    
-    
     /**
      * 
      */
@@ -74,7 +72,18 @@ public class Rocket extends Scrollable
     /**
      * Sound wenn etwas abegeworfen wird
      */
-    private GreenfootSound drop= new GreenfootSound("biglaser.wav");
+    private GreenfootSound drop = new GreenfootSound("biglaser.wav");
+    
+    /**
+     * Ringbuffer für Koordiaten und drehung
+     */
+    private RingBuffer ringX , ringY , ringRot;
+    
+    /**
+     * Diese Konstante enthält die Grösse der 3 Ringpuffers von der Rackette.
+     */
+    private final int CAPACITY_RINGBUFFER = 1000;
+
     
     public Rocket()
     {
@@ -82,7 +91,11 @@ public class Rocket extends Scrollable
         super(false);
         makePlaylist("bomb-1.wav,bomb-2.mp3,");
         pose = new Pose(this);
-        inventory= new Inventory();
+        inventory = new Inventory();
+        
+        ringX =  new RingBuffer(CAPACITY_RINGBUFFER);
+        ringY =  new RingBuffer(CAPACITY_RINGBUFFER);
+        ringRot =  new RingBuffer(CAPACITY_RINGBUFFER);
     }
 
     /**
@@ -93,8 +106,11 @@ public class Rocket extends Scrollable
         super(false);
         makePlaylist(playlist);
         pose = new Pose(this);
+        inventory = new Inventory();
         
-        inventory= new Inventory();
+        ringX =  new RingBuffer(CAPACITY_RINGBUFFER);
+        ringY =  new RingBuffer(CAPACITY_RINGBUFFER);
+        ringRot =  new RingBuffer(CAPACITY_RINGBUFFER);
     }
     /**
      * Diese Methode herstellt eine Playliste für ein Objekt "Rocket"
@@ -108,7 +124,7 @@ public class Rocket extends Scrollable
         {
             j = playlist.indexOf(",", i+1);
             sounds.add(new GreenfootSound(playlist.substring(i, j)));
-            i = j+1;
+            i = j + 1;
         }
     }
     
@@ -136,7 +152,18 @@ public class Rocket extends Scrollable
            space.initObj(new Bullet(getX(),getY(),mouse.getX(),mouse.getY()),getX(),getY());
            //System.out.println(getRealX()+":"+getRealY()+"     "+getX()+":"+getY());
         }
-        
+        if(!Greenfoot.isKeyDown("r"))
+        {
+          ringX.push(getRealX());
+          //System.out.println("push "+ getX() + " real : " + getRealX());
+          ringY.push(getRealY());
+          ringRot.push(getRotation());
+        }
+        else if(!ringX.isEmpty())
+        {
+            setLocation(ringX.pop() + getScrWorld().getShiftX(), ringY.pop() + getScrWorld().getShiftY());
+            setRotation(ringRot.pop());
+        }
     }
     
     /**
@@ -209,6 +236,7 @@ public class Rocket extends Scrollable
             //System.out.println("pose rest"+getOneIntersectingObject(Obstacle.class));
             pose.resetActor();
         }
+        
     }
 
     /**
@@ -218,15 +246,19 @@ public class Rocket extends Scrollable
     {
         inventory.storeItem(new_item);
     }
+    
     /**
      * Getter für Pose
      */
     public Pose getPose()
     {
-        return new Pose(getRealX(),getRealY(),getRotation());
+        return new Pose(getRealX(), getRealY(), getRotation());
     }
+    /**
+     * Getter für Pose
+     */
     public String toString()
     {
-        return getPose()+"";
+        return getPose() + "";
     }
 }

@@ -14,7 +14,7 @@ public class Game extends World
     /** Alle Welten. */
     private static ArrayList<World> worlds;
     
-    /** Die Klassen der zu übertragenden Objekte    */
+    /** Die Klassen der zu übertragenden Objekte */
     private static Class[] transferables;
     
     /**
@@ -40,8 +40,10 @@ public class Game extends World
      */
     public static World getWorld(Class worldClass)
     {
-        for (World world : worlds) {
-            if (world.getClass() == worldClass) {
+        for (World world : worlds)
+        {
+            if (world.getClass() == worldClass)
+            {
                 return world;
             }
         }
