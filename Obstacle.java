@@ -14,6 +14,6 @@ public class Obstacle extends Scrollable
      */
     public void act() 
     {
-         
+          
     }    
 }

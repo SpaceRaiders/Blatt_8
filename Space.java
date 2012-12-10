@@ -95,7 +95,6 @@ public class Space extends ScrollableWorld
         Inventory inventory = new Inventory();
         addObject(inventory, 958, 307);
         inventory.setLocation(950, 300);
-        
         Portal portal = new Portal(Space.class,700,300);
         initObj(portal, 171, 296);
         Portal portal2 = new Portal(Andromeda.class,200,300);

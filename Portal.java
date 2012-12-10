@@ -77,29 +77,16 @@ public class Portal extends Scrollable
         
         for(int i=0; i < objects.size(); i++)
         {
-            if(objects.get(i) instanceof Scrollable){
-                oldWorld.removeObject((Scrollable)objects.get(i));
-                
-                if(objects.get(i) instanceof Rocket)
-                {
-                    newWorld.initObj((Scrollable) objects.get(i),x,y);
-                    System.out.println("pre:  "+getScrWorld().getShiftX()+":"+getScrWorld().getShiftY()+"\n"+(Rocket)objects.get(i));
-                }
-                else
-                {
-                    newWorld.initObj((Scrollable)objects.get(i),(int) points.get(i).getX(),(int)points.get(i).getY());
-                }
-                
-                
+            oldWorld.removeObject((Scrollable)objects.get(i));
+            if(objects.get(i) instanceof Rocket)
+            {
+                newWorld.initObj((Scrollable) objects.get(i),x,y);
+                System.out.println("pre:  "+getScrWorld().getShiftX()+":"+getScrWorld().getShiftY()+"\n"+(Rocket)objects.get(i));
             }
-            else{
-                oldWorld.removeObject(objects.get(i));
-                newWorld.addObject(objects.get(i),(int) points.get(i).getX(),(int)points.get(i).getY());
-                
-                
+            else
+            {
+                newWorld.initObj((Scrollable)objects.get(i),(int) points.get(i).getX(),(int)points.get(i).getY());
             }
-            
-            
         }
         System.out.println("post: "+getScrWorld().getShiftX()+":"+getScrWorld().getShiftY()+"\n"+newWorld.getRocket());
         

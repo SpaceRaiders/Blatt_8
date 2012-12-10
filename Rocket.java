@@ -20,7 +20,7 @@ public class Rocket extends Scrollable
 
     /**
      * Definiert Wie heil die Rackette ist.
-     */
+     */ 
     private int hp = 10;
     
     /**
@@ -257,10 +257,11 @@ public class Rocket extends Scrollable
     
     /**
      * 
+    /**
+     * Getter für Pose
      */
     public String toString()
     {
         return getPose() + "";
     }
-    
 }

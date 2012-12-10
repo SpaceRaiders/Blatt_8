@@ -49,10 +49,6 @@ public class Game extends World
         }
         return null;
     }
-    
-    /**
-     * 
-     */
     public static Class[] gettransferCls()
     {
         return transferables;
