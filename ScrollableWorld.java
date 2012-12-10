@@ -95,10 +95,6 @@ public class ScrollableWorld extends World
         
         scroll(dx,dy);
         
-        if(Greenfoot.isKeyDown("h"))
-        {
-            Greenfoot.setWorld(new MainMenu());
-        }
     }
     public void scroll(int dx, int dy)
     {
