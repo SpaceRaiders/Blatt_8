@@ -10,7 +10,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
  * @version 18-11-2012
  */
-public class Scrollable extends Actor
+public class Scrollable extends TmpCollision//Actor
 {
     /**
      * 
@@ -224,4 +224,5 @@ public class Scrollable extends Actor
         
         //System.out.println(toString()+"   x:" +getX()+":"+(real_x+space.getShiftX())+":"+real_x+"   y:"+getY()+":"+real_y);
     }
+    
 }

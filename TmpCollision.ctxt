@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=ObjClass
+comment0.target=greenfoot.Actor\ getCollidingObject(java.lang.Class)
+comment0.text=\n\ @return\ Collidierendes\ Object\ bzw\ null\ \n
+comment1.params=objClass
+comment1.target=boolean\ isColliding(java.lang.Class)
+comment1.text=\n\ Testet\ auf\ Kollision\ mit\ einer\ best\ KLasse\n
+comment2.params=objClass
+comment2.target=boolean\ neueKollsionmit(java.lang.Class)
+comment2.text=\n\ Testet\ auf\ neue\ Kollision(\ mit\ einer\ best.\ Klasse)\n\ TODO\:\ guter\ name\ \n
+numComments=3
