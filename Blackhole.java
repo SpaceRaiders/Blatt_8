@@ -12,4 +12,13 @@ public class Blackhole extends Obstacle
     /**
      * Die Klasse macht nie etwas, sie "liegt" nur im Weg rum.
      */
+    
+    
+    /**
+     * Testen der Kollisionen
+     */
+    public void act(){
+        
+       isColliding3(Bullet.class);
+    }
 }

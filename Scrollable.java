@@ -249,11 +249,11 @@ public class Scrollable extends TmpCollision//Actor
                 for( int j=0; j < imgTransparency[0].length; j++){
                     // umrechnung in int sp�ter?   --- getRealX() ?
                     double x1_welt = getRealX() + ( i -  getImage().getWidth()/2 ) * Math.cos(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.sin(Math.toRadians(getRotation()));
-                    double y1_welt = getRealY() + ( i -  getImage().getWidth()/2 ) * Math.sin(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.cos(Math.toRadians(getRotation()));
+                    double y1_welt = getRealY() + ( i -  getImage().getWidth()/2 ) * Math.sin(Math.toRadians(getRotation())) + (j-getImage().getHeight())*Math.cos(Math.toRadians(getRotation()));
                     
                     // umrechnung 2tes bils
                     double x2_px = tmp.getImage().getWidth()/2 + (x1_welt - tmp.getRealX())* Math.cos(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.sin(Math.toRadians(tmp.getRotation()));
-                    double y2_px = tmp.getImage().getHeight()/2 - (x1_welt - tmp.getRealX())* Math.sin(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.cos(Math.toRadians(tmp.getRotation()));
+                    double y2_px = tmp.getImage().getHeight()/2 - (x1_welt - tmp.getRealX())* Math.sin(Math.toRadians(tmp.getRotation())) - (y1_welt -tmp.getY())* Math.cos(Math.toRadians(tmp.getRotation()));
 
                     if(0<=x2_px && 0<=y2_px && (int)x2_px < tmpTransparency.length && (int) y2_px < tmpTransparency[0].length ){
                         if( imgTransparency[i][j] &&  tmpTransparency[(int) x2_px][(int)y2_px]){
@@ -312,6 +312,57 @@ public class Scrollable extends TmpCollision//Actor
         
         return false;
     }
+    public boolean isColliding3(Class objClass)
+    {
+        //transparenz des einen bildes
+        boolean[][] imgTransparency = getTransPx(getImage());
+
+        List<Actor> actors = getIntersectingObjects(objClass);
+        
+        //hier für alle Actoren pruefen
+        for(Actor object : actors)
+        {
+            //hier gäbe es errors wenn objClass keine unterklasse von SCrollable oder SCrollable ist
+            Scrollable tmp = (Scrollable) object;
+            
+            boolean[][] tmpTransparency = tmp.getTransPx(tmp.getImage());
+            System.out.println("---------------------\n"+tmp.getImage().getWidth()+":"+tmp.getImage().getHeight());
+            
+            //hier geht man jeden Pixel des Bildes durch
+            for(int i=0; i< imgTransparency.length ; i++){
+                for( int j=0; j < imgTransparency[0].length; j++){
+                    //Berechnung von x Welt und Y Welt
+                    //double x1_welt = getRealX() + (i- getImage().getWidth()/2)*Math.cos(Math.toRadians(getRotation())) - (j - getImage().getHeight()/2)*Math.sin(Math.toRadians(getRotation()));
+                    //double y1_welt = getRealY() + (i- getImage().getWidth()/2)*Math.sin(Math.toRadians(getRotation())) + (j - getImage().getHeight()/2)*Math.cos(Math.toRadians(getRotation()));
+                    double x1_welt = getX() + (i- getImage().getWidth()/2)*Math.cos(Math.toRadians(getRotation())) - (j - getImage().getHeight()/2)*Math.sin(Math.toRadians(getRotation()));
+                    double y1_welt = getY() + (i- getImage().getWidth()/2)*Math.sin(Math.toRadians(getRotation())) + (j - getImage().getHeight()/2)*Math.cos(Math.toRadians(getRotation()));
+                    
+                    //Berechnung in (theoretischen) Koordinaten des zweiten Bildes
+                    //double x2_px= tmp.getImage().getWidth()/2  + (x1_welt - tmp.getRealX())*Math.cos(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.sin(Math.toRadians(tmp.getRotation()));
+                    //double y2_px= tmp.getImage().getHeight()/2 - (x1_welt - tmp.getRealX())*Math.sin(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.cos(Math.toRadians(tmp.getRotation()));
+                    double x2_px= tmp.getImage().getWidth()/2  + (x1_welt - tmp.getX())*Math.cos(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.sin(Math.toRadians(tmp.getRotation()));
+                    double y2_px= tmp.getImage().getHeight()/2 - (x1_welt - tmp.getX())*Math.sin(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.cos(Math.toRadians(tmp.getRotation()));
+                    
+                    System.out.println(x2_px+":"+y2_px);
+                    
+                    //sind dei Koordinaten überhaupt im 2ten bild?
+                    if(0<= x2_px && 0<=y2_px && x2_px<tmpTransparency.length && y2_px<tmpTransparency[0].length)
+                    {
+                        // sind beide sichtbar?
+                        if(imgTransparency[i][j] && tmpTransparency[(int)x2_px][(int)y2_px])
+                        {
+                            getImage().setColorAt(i, j,Color.RED);
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+        }
+        return false;
+    }
+    
     public void transparencytest()
     {
         GreenfootImage img = getImage();
@@ -336,7 +387,7 @@ public class Scrollable extends TmpCollision//Actor
 
         for(int i=0;i<img.getWidth();i++){
             for(int j=0; j < img.getHeight();j++){
-                imgTransp[i][j]= img.getColorAt(i,j).getAlpha()==0; // false wenn transparent
+                imgTransp[i][j]=  img.getColorAt(i,j).getAlpha()!=0; // false wenn transparent
             }
         }
         return imgTransp;
