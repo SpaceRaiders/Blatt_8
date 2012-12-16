@@ -12,7 +12,7 @@ import java.awt.Color;
  * @author Vitalij Kochno - Yorick Netzer - Christophe Stilmant
  * @version 18-11-2012
  */
-public class Scrollable extends TmpCollision//Actor
+public class Scrollable extends Actor
 {
     /**
      * 
@@ -43,13 +43,15 @@ public class Scrollable extends TmpCollision//Actor
      * 
      */
     private boolean canleave = true;
-
+    
+    /**    Speichert ob zurzeit eine Kollision mit einem Actor einer best Klasse ist */
+    private HashMap<Class,Actor> collisions ;
     /**
      * Konstruktor
      */
     public Scrollable()
     {
-
+        collisions=  new HashMap<Class,Actor>();
     }
 
     /**
@@ -58,6 +60,7 @@ public class Scrollable extends TmpCollision//Actor
     public Scrollable(boolean canleaveWorld)
     {
         canleave = canleaveWorld;
+        collisions=  new HashMap<Class,Actor>();
     }
 
     /**
@@ -227,155 +230,52 @@ public class Scrollable extends TmpCollision//Actor
 
     // ---------------------- Collision ----------------------------------------------------------
 
+    
     /**
-     * Testet auf Kollision mit einer best KLasse
+     * @return Collidierendes Object bzw null 
+     */
+
+    public Actor  getCollidingObject(Class objClass)
+    {
+        List<Actor> actors = getIntersectingObjects(objClass);
+
+        for( Actor actor : actors )
+        {
+            Scrollable scrble = (Scrollable) actor ;
+            if(isRealCollision(scrble)){
+                return actor;
+            }
+        }
+        return null;
+    }
+    /**
+     * @return Gibt true zurück, wenn gerade eine Kollision mit einem Objekt der Klasse besteht, amsonsten false
      */
     public boolean isColliding(Class objClass)
     {
-        //return getOneIntersectingObject(objClass) != null ;
-
-        //transparenz des einen bildes
-        boolean[][] imgTransparency = getTransPx(getImage());
-
-        List<Actor> actors = getIntersectingObjects(objClass);
-
-        for( Actor object : actors){
-            Scrollable tmp = (Scrollable) object;
-            boolean[][] tmpTransparency = tmp.getTransPx(getImage());
-
-            for(int i=0; i< imgTransparency.length ; i++){
-                for( int j=0; j < imgTransparency[0].length; j++){
-                    // umrechnung in int sp�ter?   --- getRealX() ?
-                    double x1_welt = getRealX() + ( i -  getImage().getWidth()/2 ) * Math.cos(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.sin(Math.toRadians(getRotation()));
-                    double y1_welt = getRealY() + ( i -  getImage().getWidth()/2 ) * Math.sin(Math.toRadians(getRotation())) + (j-getImage().getHeight())*Math.cos(Math.toRadians(getRotation()));
-
-                    // umrechnung 2tes bils
-                    double x2_px = tmp.getImage().getWidth()/2 + (x1_welt - tmp.getRealX())* Math.cos(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.sin(Math.toRadians(tmp.getRotation()));
-                    double y2_px = tmp.getImage().getHeight()/2 - (x1_welt - tmp.getRealX())* Math.sin(Math.toRadians(tmp.getRotation())) - (y1_welt -tmp.getY())* Math.cos(Math.toRadians(tmp.getRotation()));
-
-                    if(0<=x2_px && 0<=y2_px && (int)x2_px < tmpTransparency.length && (int) y2_px < tmpTransparency[0].length ){
-                        if( imgTransparency[i][j] &&  tmpTransparency[(int) x2_px][(int)y2_px]){
-                            getImage().setColorAt(i, j,Color.RED);
-                            System.out.println("Kollision bei "+ x1_welt+":"+y1_welt);
-                        }
-                    }
-
-                }
-            }
-        }
-
-        
-        return false;
+        return getCollidingObject(objClass)!=null;
     }
-
     /**
-     * Testet auf Kollision mit einer best KLasse
+     * 
      */
-    public boolean isColliding2(Class objClass)
+    public boolean newCollisonwith(Class objClass)
     {
-        //return getOneIntersectingObject(objClass) != null ;
-
-        //transparenz des einen bildes
-        boolean[][] imgTransparency = getTransPx(getImage());
-
-        List<Actor> actors = getIntersectingObjects(objClass);
-
-        for( Actor object : actors){
-            TmpCollision tmp = (TmpCollision) object;
-            boolean[][] tmpTransparency = tmp.getTransPx(getImage());
-
-            for(int i=0; i< imgTransparency.length ; i++){
-                for( int j=0; j < imgTransparency[0].length; j++){
-                    // umrechnung in int sp�ter?   --- getRealX() ?
-                    double x1_welt = getX() + ( i -  getImage().getWidth()/2 ) * Math.cos(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.sin(Math.toRadians(getRotation()));
-                    double y1_welt = getY() + ( i -  getImage().getWidth()/2 ) * Math.sin(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.cos(Math.toRadians(getRotation()));
-
-                    //getImage().setColorAt(i, j,Color.RED);
-                    // umrechnung 2tes bils
-                    double x2_px = tmp.getImage().getWidth()/2 + (x1_welt - tmp.getX())* Math.cos(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.sin(Math.toRadians(tmp.getRotation()));
-                    double y2_px = tmp.getImage().getHeight()/2 - (x1_welt - tmp.getX())* Math.sin(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.cos(Math.toRadians(tmp.getRotation()));
-
-                    if(0<=x2_px && 0<=y2_px && (int)x2_px < tmpTransparency.length && (int) y2_px < tmpTransparency[0].length ){
-                        if( imgTransparency[i][j] &&  tmpTransparency[(int) x2_px][(int)y2_px]){
-                            getImage().setColorAt(i, j,Color.RED);
-
-                        }
-                    }
-
-                }
-            }
-        }
-
-        
-        return false;
-    }
-
-    public boolean isColliding3(Class objClass)
-    {
-        //transparenz des einen bildes
-        boolean[][] imgTransparency = getTransPx(getImage());
-
-        List<Actor> actors = getIntersectingObjects(objClass);
-
-        //hier für alle Actoren pruefen
-        for(Actor object : actors)
+        Actor a = getCollidingObject(objClass);
+        if(a!=null)
         {
-            //hier gäbe es errors wenn objClass keine unterklasse von SCrollable oder SCrollable ist
-            Scrollable tmp = (Scrollable) object;
-
-            boolean[][] tmpTransparency = tmp.getTransPx(tmp.getImage());
-            System.out.println("---------------------\n"+tmp.getImage().getWidth()+":"+tmp.getImage().getHeight());
-
-            //hier geht man jeden Pixel des Bildes durch
-            for(int i=0; i< imgTransparency.length ; i++){
-                for( int j=0; j < imgTransparency[0].length; j++){
-                    //Berechnung von x Welt und Y Welt
-                    //double x1_welt = getRealX() + (i- getImage().getWidth()/2)*Math.cos(Math.toRadians(getRotation())) - (j - getImage().getHeight()/2)*Math.sin(Math.toRadians(getRotation()));
-                    //double y1_welt = getRealY() + (i- getImage().getWidth()/2)*Math.sin(Math.toRadians(getRotation())) + (j - getImage().getHeight()/2)*Math.cos(Math.toRadians(getRotation()));
-                    double x1_welt = getX() + (i- getImage().getWidth()/2)*Math.cos(Math.toRadians(getRotation())) - (j - getImage().getHeight()/2)*Math.sin(Math.toRadians(getRotation()));
-                    double y1_welt = getY() + (i- getImage().getWidth()/2)*Math.sin(Math.toRadians(getRotation())) + (j - getImage().getHeight()/2)*Math.cos(Math.toRadians(getRotation()));
-
-                    //hier in lang
-                    int x1_objekt = getX();
-                    int y1_objekt = getY();
-                    int x1_delta = (i-getImage().getWidth()/2);
-                    int y1_delta = (j-getImage().getHeight()/2);
-
-                    x1_welt = x1_objekt + x1_delta * Math.cos(Math.toRadians(getRotation())) - y1_delta* Math.sin(Math.toRadians(getRotation()));
-                    y1_welt = y1_objekt + x1_delta * Math.sin(Math.toRadians(getRotation())) + y1_delta* Math.cos(Math.toRadians(getRotation()));
-                    //System.out.println(
-
-                    
-                    
-                    //Berechnung in (theoretischen) Koordinaten des zweiten Bildes
-                    //double x2_px= tmp.getImage().getWidth()/2  + (x1_welt - tmp.getRealX())*Math.cos(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.sin(Math.toRadians(tmp.getRotation()));
-                    //double y2_px= tmp.getImage().getHeight()/2 - (x1_welt - tmp.getRealX())*Math.sin(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.cos(Math.toRadians(tmp.getRotation()));
-                    double x2_px= tmp.getImage().getWidth()/2  + (x1_welt - tmp.getX())*Math.cos(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.sin(Math.toRadians(tmp.getRotation()));
-                    double y2_px= tmp.getImage().getHeight()/2 - (x1_welt - tmp.getX())*Math.sin(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.cos(Math.toRadians(tmp.getRotation()));
-
-                    //hier nochmal in lang
-                    double x2_delta= x1_welt - tmp.getX();
-                    double y2_delta= y1_welt - tmp.getY();
-                    x2_px= tmp.getImage().getWidth()  / 2+ x2_delta*Math.cos(Math.toRadians(tmp.getRotation()))+y2_delta*Math.sin(Math.toRadians(tmp.getRotation()));
-                    //y2_px= tmp.getImage().getHeight() / 2- x2_delta*Math.sin(Math.toRadians(tmp.getRotation()))+y2_delta*Math.cos(Math.toRadians(tmp.getRotation()));
-
-                    //sind dei Koordinaten überhaupt im 2ten bild?
-                    if(0<= x2_px && 0<=y2_px && x2_px<tmpTransparency.length && y2_px<tmpTransparency[0].length)
-                    {
-
-                        System.out.println((int)x2_px+":"+(int)y2_px);
-                        // sind beide sichtbar?
-                        if(imgTransparency[i][j] && tmpTransparency[(int)x2_px][(int)y2_px])
-                        {
-                            getImage().setColorAt(i, j,Color.RED);
-                        }
-                    }
-
-                }
-
+            Actor a2 = collisions.get(objClass);
+            collisions.put(objClass,a);
+            if(a.equals(a2))
+            {
+                return false;
+            }
+            else{
+                return true;
             }
         }
-        return false;
+        else{
+            return false;
+        }
     }
 
     public boolean isColliding4(Class objClass){
@@ -390,7 +290,9 @@ public class Scrollable extends TmpCollision//Actor
         }
         return false;
     }
-
+    /**
+     * 
+     */
     public boolean isRealCollision(Scrollable scrble)
     {
         boolean colliding=false;
@@ -406,9 +308,14 @@ public class Scrollable extends TmpCollision//Actor
                     if(0<=x2_px && 0<=y2_px && x2_px< scrble.getImage().getWidth() && y2_px<scrble.getImage().getHeight()){
 
                         if(scrble.getImage().getColorAt(x2_px,y2_px).getAlpha()!=0){
-                            getImage().setColorAt(i, j,Color.RED);
-                            System.out.println("kollision");
-                            colliding= true;
+                            
+                            if(getScrWorld().isTestmodus()){
+                                getImage().setColorAt(i, j,Color.RED);
+                                colliding= true;
+                            }
+                            else{
+                                return true; // für Geschwindigkeit, im Normalfall kann man hier abbrechen
+                            }
                         }
                     }
                 }
@@ -417,7 +324,7 @@ public class Scrollable extends TmpCollision//Actor
 
         return colliding;
     }
-
+    /*
     public void transparencytest()
     {
         GreenfootImage img = getImage();
@@ -434,7 +341,7 @@ public class Scrollable extends TmpCollision//Actor
 
     /**
      * gibt einen 2 dimensionalen arraz mit den koordinaten der transparenten px zurueck ( true, wenn nicht transparent )
-     */
+     *
     public boolean[][] getTransPx(GreenfootImage img)
     {
         boolean[][] imgTransp= new boolean[img.getWidth()][img.getHeight()];
@@ -446,5 +353,5 @@ public class Scrollable extends TmpCollision//Actor
         }
         return imgTransp;
     }
-
+    */
 }

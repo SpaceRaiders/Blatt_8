@@ -15,6 +15,7 @@ public class ScrollableWorld extends World
     //private ArrayList<Point> realPos = new ArrayList<Point>();
     private int grenzeX,grenzeY,width=2400,height=1600,shiftX=0,shiftY=0,widthHUD=150;
     private HUD hud;
+    private boolean testmodus=false;
     /**
      * Constructor for objects of class Space.
      * 
@@ -161,6 +162,14 @@ public class ScrollableWorld extends World
     public int getShiftY()
     {
         return shiftY;
+    }
+    public void setTestmodus(boolean testen)
+    {
+        testmodus=testen;
+    }
+    public boolean isTestmodus()
+    {
+        return testmodus;
     }
 }
 
