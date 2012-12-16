@@ -260,6 +260,7 @@ public class Scrollable extends Actor
      */
     public boolean newCollisonwith(Class objClass)
     {
+        //noch ungetestet
         Actor a = getCollidingObject(objClass);
         if(a!=null)
         {
@@ -324,34 +325,42 @@ public class Scrollable extends Actor
 
         return colliding;
     }
-    /*
-    public void transparencytest()
+    
+    /* Hier die Methoden für Aufgabe 2
+    
+    public Actor  getCollidingObject(Class ObjClass)
     {
-        GreenfootImage img = getImage();
-        boolean[][] transparency = getTransPx(img);
-        for(int i=0; i< transparency.length; i++){
-            for( int j=0; j<transparency[0].length;j++){
-                if(transparency[i][j]){
-                    getImage().setColorAt(i, j,Color.BLUE);
-                }
-            }
-        }
-
+        return getOneIntersectingObject(ObjClass);
+    }
+     */
+    /*
+     * Testet auf Kollision mit einer best KLasse
+     *
+    public boolean isColliding(Class objClass)
+    {
+    return getOneIntersectingObject(objClass) != null ;
     }
 
     /**
-     * gibt einen 2 dimensionalen arraz mit den koordinaten der transparenten px zurueck ( true, wenn nicht transparent )
-     *
-    public boolean[][] getTransPx(GreenfootImage img)
-    {
-        boolean[][] imgTransp= new boolean[img.getWidth()][img.getHeight()];
-
-        for(int i=0;i<img.getWidth();i++){
-            for(int j=0; j < img.getHeight();j++){
-                imgTransp[i][j]=  img.getColorAt(i,j).getAlpha()!=0; // false wenn transparent
+     * Testet auf neue Kollision( mit einer best. Klasse)
+     *//*
+    public boolean neueKollsionmit(Class objClass)
+    Actor a = getCollidingObject(objClass);
+        if(a!=null)
+        {
+            Actor a2 = collisions.get(objClass);
+            collisions.put(objClass,a);
+            if(a.equals(a2))
+            {
+                return false;
+            }
+            else{
+                return true;
             }
         }
-        return imgTransp;
-    }
+        else{
+            return false;
+        }
+
     */
 }
