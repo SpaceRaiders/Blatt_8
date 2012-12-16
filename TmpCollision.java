@@ -94,20 +94,21 @@ public class TmpCollision extends Actor
         return false;
     }
 
-    /**
-     * gibt einen 2 dimensionalen arraz mit den transparenten px zurueck ( true, wenn nicht transparent )
+     /**
+     * gibt einen 2 dimensionalen arraz mit den koordinaten der transparenten px zurueck ( true, wenn nicht transparent )
      */
-    private boolean[][] getTransPx(GreenfootImage img)
+    public boolean[][] getTransPx(GreenfootImage img)
     {
         boolean[][] imgTransp= new boolean[img.getWidth()][img.getHeight()];
 
         for(int i=0;i<img.getWidth();i++){
             for(int j=0; j < img.getHeight();j++){
-                imgTransp[i][j]= img.getTransparency()==0 ? false : true; // false wenn transparent
+                imgTransp[i][j]= img.getColorAt(i,j).getAlpha()==0; // false wenn transparent
             }
         }
         return imgTransp;
     }
+    
 
     //hier der Code vom Anfang
     

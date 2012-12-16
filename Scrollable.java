@@ -1,4 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
+import java.awt.Color;
 
 /**
  * Oberklasse aller SCrollbaren Objecte.
@@ -223,6 +225,121 @@ public class Scrollable extends TmpCollision//Actor
         setLocation(real_x+space.getShiftX()+movex,real_y+space.getShiftY()+movey);
         
         //System.out.println(toString()+"   x:" +getX()+":"+(real_x+space.getShiftX())+":"+real_x+"   y:"+getY()+":"+real_y);
+    }
+    
+    // ---------------------- Collision ----------------------------------------------------------
+    
+    /**
+     * Testet auf Kollision mit einer best KLasse
+     */
+    public boolean isColliding(Class objClass)
+    {
+        //return getOneIntersectingObject(objClass) != null ;
+
+        //transparenz des einen bildes
+        boolean[][] imgTransparency = getTransPx(getImage());
+
+        List<Actor> actors = getIntersectingObjects(objClass);
+
+        for( Actor object : actors){
+            Scrollable tmp = (Scrollable) object;
+            boolean[][] tmpTransparency = tmp.getTransPx(getImage());
+
+            for(int i=0; i< imgTransparency.length ; i++){
+                for( int j=0; j < imgTransparency[0].length; j++){
+                    // umrechnung in int sp�ter?   --- getRealX() ?
+                    double x1_welt = getRealX() + ( i -  getImage().getWidth()/2 ) * Math.cos(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.sin(Math.toRadians(getRotation()));
+                    double y1_welt = getRealY() + ( i -  getImage().getWidth()/2 ) * Math.sin(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.cos(Math.toRadians(getRotation()));
+                    
+                    // umrechnung 2tes bils
+                    double x2_px = tmp.getImage().getWidth()/2 + (x1_welt - tmp.getRealX())* Math.cos(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.sin(Math.toRadians(tmp.getRotation()));
+                    double y2_px = tmp.getImage().getHeight()/2 - (x1_welt - tmp.getRealX())* Math.sin(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.cos(Math.toRadians(tmp.getRotation()));
+
+                    if(0<=x2_px && 0<=y2_px && (int)x2_px < tmpTransparency.length && (int) y2_px < tmpTransparency[0].length ){
+                        if( imgTransparency[i][j] &&  tmpTransparency[(int) x2_px][(int)y2_px]){
+                            getImage().setColorAt(i, j,Color.RED);
+                            System.out.println("Kollision bei "+ x1_welt+":"+y1_welt);
+                        }
+                    }
+
+                }
+            }
+        }
+
+        
+        
+        return false;
+    }
+    /**
+     * Testet auf Kollision mit einer best KLasse
+     */
+    public boolean isColliding2(Class objClass)
+    {
+        //return getOneIntersectingObject(objClass) != null ;
+
+        //transparenz des einen bildes
+        boolean[][] imgTransparency = getTransPx(getImage());
+
+        List<Actor> actors = getIntersectingObjects(objClass);
+
+        for( Actor object : actors){
+            TmpCollision tmp = (TmpCollision) object;
+            boolean[][] tmpTransparency = tmp.getTransPx(getImage());
+
+            for(int i=0; i< imgTransparency.length ; i++){
+                for( int j=0; j < imgTransparency[0].length; j++){
+                    // umrechnung in int sp�ter?   --- getRealX() ?
+                    double x1_welt = getX() + ( i -  getImage().getWidth()/2 ) * Math.cos(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.sin(Math.toRadians(getRotation()));
+                    double y1_welt = getY() + ( i -  getImage().getWidth()/2 ) * Math.sin(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.cos(Math.toRadians(getRotation()));
+
+                    //getImage().setColorAt(i, j,Color.RED);
+                    // umrechnung 2tes bils
+                    double x2_px = tmp.getImage().getWidth()/2 + (x1_welt - tmp.getX())* Math.cos(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.sin(Math.toRadians(tmp.getRotation()));
+                    double y2_px = tmp.getImage().getHeight()/2 - (x1_welt - tmp.getX())* Math.sin(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.cos(Math.toRadians(tmp.getRotation()));
+
+                    if(0<=x2_px && 0<=y2_px && (int)x2_px < tmpTransparency.length && (int) y2_px < tmpTransparency[0].length ){
+                        if( imgTransparency[i][j] &&  tmpTransparency[(int) x2_px][(int)y2_px]){
+                            getImage().setColorAt(i, j,Color.RED);
+                            
+                        }
+                    }
+
+                }
+            }
+        }
+
+        
+        
+        return false;
+    }
+    public void transparencytest()
+    {
+        GreenfootImage img = getImage();
+        boolean[][] transparency = getTransPx(img);
+        for(int i=0; i< transparency.length; i++){
+            for( int j=0; j<transparency[0].length;j++){
+                if(transparency[i][j]){
+                    getImage().setColorAt(i, j,Color.BLUE);
+                }
+            }
+        }
+        
+    }
+    
+    
+    /**
+     * gibt einen 2 dimensionalen arraz mit den koordinaten der transparenten px zurueck ( true, wenn nicht transparent )
+     */
+    public boolean[][] getTransPx(GreenfootImage img)
+    {
+        boolean[][] imgTransp= new boolean[img.getWidth()][img.getHeight()];
+
+        for(int i=0;i<img.getWidth();i++){
+            for(int j=0; j < img.getHeight();j++){
+                imgTransp[i][j]= img.getColorAt(i,j).getAlpha()==0; // false wenn transparent
+            }
+        }
+        return imgTransp;
     }
     
 }

@@ -10,5 +10,5 @@ comment2.target=boolean\ neueKollsionmit(java.lang.Class)
 comment2.text=\r\n\ Testet\ auf\ neue\ Kollision(\ mit\ einer\ best.\ Klasse)\r\n\ TODO\:\ guter\ name\ \r\n
 comment3.params=img
 comment3.target=boolean[][]\ getTransPx(greenfoot.GreenfootImage)
-comment3.text=\r\n\ gibt\ einen\ 2\ dimensionalen\ arraz\ mit\ den\ transparenten\ px\ zurueck\ (\ true,\ wenn\ nicht\ transparent\ )\r\n
+comment3.text=\r\n\ gibt\ einen\ 2\ dimensionalen\ arraz\ mit\ den\ koordinaten\ der\ transparenten\ px\ zurueck\ (\ true,\ wenn\ nicht\ transparent\ )\r\n
 numComments=4

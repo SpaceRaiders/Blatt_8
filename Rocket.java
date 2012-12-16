@@ -134,9 +134,14 @@ public class Rocket extends Scrollable
      */
     public void act() 
     {
-        isColliding(CollisionTester.class);
         
+       isColliding(CollisionTester.class);
+       isColliding2(Bullet.class);
+       transparencytest();
+       
+       
        pose.update();
+       
 
        //System.out.println(getPose()+" getpose");
        //System.out.println(pose+"  pose");
