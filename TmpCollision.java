@@ -49,17 +49,18 @@ public class TmpCollision extends Actor
             for(int i=0; i< imgTransparency.length ; i++){
                 for( int j=0; j < imgTransparency[0].length; j++){
                     // umrechnung in int sp�ter?   --- getRealX() ?
-                    double x = getX() + ( i -  getImage().getWidth()/2 ) * Math.cos(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.sin(Math.toRadians(getRotation()));
-                    double y = getY() + ( i -  getImage().getWidth()/2 ) * Math.sin(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.cos(Math.toRadians(getRotation()));
+                    double x1_welt = getX() + ( i -  getImage().getWidth()/2 ) * Math.cos(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.sin(Math.toRadians(getRotation()));
+                    double y1_welt = getY() + ( i -  getImage().getWidth()/2 ) * Math.sin(Math.toRadians(getRotation())) - (j-getImage().getHeight())*Math.cos(Math.toRadians(getRotation()));
 
-                    getImage().setColorAt(i, j,Color.RED);
+                    //getImage().setColorAt(i, j,Color.RED);
                     // umrechnung 2tes bils
-                    double x2 = tmp.getImage().getWidth()/2 + (x - tmp.getX())* Math.cos(Math.toRadians(tmp.getRotation())) + (y -tmp.getY())* Math.sin(Math.toRadians(tmp.getRotation()));
-                    double y2 = tmp.getImage().getHeight()/2 - (x - tmp.getX())* Math.sin(Math.toRadians(tmp.getRotation())) + (y -tmp.getY())* Math.cos(Math.toRadians(tmp.getRotation()));
+                    double x2_px = tmp.getImage().getWidth()/2 + (x1_welt - tmp.getX())* Math.cos(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.sin(Math.toRadians(tmp.getRotation()));
+                    double y2_px = tmp.getImage().getHeight()/2 - (x1_welt - tmp.getX())* Math.sin(Math.toRadians(tmp.getRotation())) + (y1_welt -tmp.getY())* Math.cos(Math.toRadians(tmp.getRotation()));
 
-                    if(0<=x2 && 0<=y2 && (int)x2 < tmpTransparency.length && (int) y2 < tmpTransparency[0].length ){
-                        if( imgTransparency[i][j] &&  tmpTransparency[(int) x2][(int)y2]){
+                    if(0<=x2_px && 0<=y2_px && (int)x2_px < tmpTransparency.length && (int) y2_px < tmpTransparency[0].length ){
+                        if( imgTransparency[i][j] &&  tmpTransparency[(int) x2_px][(int)y2_px]){
                             getImage().setColorAt(i, j,Color.RED);
+                            
                         }
                     }
 
