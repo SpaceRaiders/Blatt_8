@@ -134,6 +134,8 @@ public class Rocket extends Scrollable
      */
     public void act() 
     {
+        isColliding(Asteroid.class);
+        
        pose.update();
 
        //System.out.println(getPose()+" getpose");

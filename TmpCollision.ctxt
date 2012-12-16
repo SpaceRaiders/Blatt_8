@@ -1,14 +1,14 @@
 #BlueJ class context
 comment0.params=objClass
 comment0.target=greenfoot.Actor\ getCollidingObject(java.lang.Class)
-comment0.text=\n\ @return\ Collidierendes\ Object\ bzw\ null\ \n
+comment0.text=\r\n\ @return\ Collidierendes\ Object\ bzw\ null\ \r\n
 comment1.params=objClass
 comment1.target=boolean\ isColliding(java.lang.Class)
-comment1.text=\n\ Testet\ auf\ Kollision\ mit\ einer\ best\ KLasse\n
+comment1.text=\r\n\ Testet\ auf\ Kollision\ mit\ einer\ best\ KLasse\r\n
 comment2.params=objClass
 comment2.target=boolean\ neueKollsionmit(java.lang.Class)
-comment2.text=\n\ Testet\ auf\ neue\ Kollision(\ mit\ einer\ best.\ Klasse)\n\ TODO\:\ guter\ name\ \n
+comment2.text=\r\n\ Testet\ auf\ neue\ Kollision(\ mit\ einer\ best.\ Klasse)\r\n\ TODO\:\ guter\ name\ \r\n
 comment3.params=img
 comment3.target=boolean[][]\ getTransPx(greenfoot.GreenfootImage)
-comment3.text=\n\ gibt\ einen\ 2\ dimensionalen\ arraz\ mit\ den\ transparenten\ px\ zurueck\ (\ true,\ wenn\ nicht\ transparent\ )\n
+comment3.text=\r\n\ gibt\ einen\ 2\ dimensionalen\ arraz\ mit\ den\ transparenten\ px\ zurueck\ (\ true,\ wenn\ nicht\ transparent\ )\r\n
 numComments=4
