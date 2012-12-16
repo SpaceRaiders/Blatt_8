@@ -337,13 +337,33 @@ public class Scrollable extends TmpCollision//Actor
                     double x1_welt = getX() + (i- getImage().getWidth()/2)*Math.cos(Math.toRadians(getRotation())) - (j - getImage().getHeight()/2)*Math.sin(Math.toRadians(getRotation()));
                     double y1_welt = getY() + (i- getImage().getWidth()/2)*Math.sin(Math.toRadians(getRotation())) + (j - getImage().getHeight()/2)*Math.cos(Math.toRadians(getRotation()));
                     
+                    //hier in lang
+                    int x1_objekt = getX();
+                    int y1_objekt = getY();
+                    int x1_delta = (i-getImage().getWidth()/2);
+                    int y1_delta = (j-getImage().getHeight()/2);
+                    
+                    x1_welt = x1_objekt + x1_delta * Math.cos(Math.toRadians(getRotation())) - y1_delta* Math.sin(Math.toRadians(getRotation()));
+                    y1_welt = y1_objekt + x1_delta * Math.sin(Math.toRadians(getRotation())) + y1_delta* Math.cos(Math.toRadians(getRotation()));
+                    //System.out.println(
+                    
+                    
+                    
+                    
+                    
                     //Berechnung in (theoretischen) Koordinaten des zweiten Bildes
                     //double x2_px= tmp.getImage().getWidth()/2  + (x1_welt - tmp.getRealX())*Math.cos(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.sin(Math.toRadians(tmp.getRotation()));
                     //double y2_px= tmp.getImage().getHeight()/2 - (x1_welt - tmp.getRealX())*Math.sin(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.cos(Math.toRadians(tmp.getRotation()));
                     double x2_px= tmp.getImage().getWidth()/2  + (x1_welt - tmp.getX())*Math.cos(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.sin(Math.toRadians(tmp.getRotation()));
                     double y2_px= tmp.getImage().getHeight()/2 - (x1_welt - tmp.getX())*Math.sin(Math.toRadians(tmp.getRotation()))+(y1_welt - tmp.getRealX())*Math.cos(Math.toRadians(tmp.getRotation()));
                     
-                    System.out.println(x2_px+":"+y2_px);
+                    //hier nochmal in lang
+                    double x2_delta= x1_welt - tmp.getX();
+                    double y2_delta= y1_welt - tmp.getY();
+                    x2_px= tmp.getImage().getWidth()  / 2+ x2_delta*Math.cos(Math.toRadians(tmp.getRotation()))+y2_delta*Math.sin(Math.toRadians(tmp.getRotation()));
+                    y2_px= tmp.getImage().getHeight() / 2- x2_delta*Math.sin(Math.toRadians(tmp.getRotation()))+y2_delta*Math.cos(Math.toRadians(tmp.getRotation()));
+                    
+                    //System.out.println(x2_px+":"+y2_px);
                     
                     //sind dei Koordinaten überhaupt im 2ten bild?
                     if(0<= x2_px && 0<=y2_px && x2_px<tmpTransparency.length && y2_px<tmpTransparency[0].length)
