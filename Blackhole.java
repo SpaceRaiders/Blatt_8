@@ -19,6 +19,6 @@ public class Blackhole extends Obstacle
      */
     public void act(){
         
-       isColliding3(Bullet.class);
+       isColliding4(Bullet.class);
     }
 }
